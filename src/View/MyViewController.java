@@ -45,7 +45,7 @@ public class MyViewController implements IView, Observer {
         }
     }
 
-    private void generateMaze() {
+    public void generateMaze() {
         try {
             int rows = Integer.parseInt(textField_mazeRows.getText());
             int cols = Integer.parseInt(textField_mazeColumns.getText());
