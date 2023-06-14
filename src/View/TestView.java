@@ -11,13 +11,14 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class TestView extends Application {
-
+    public static Stage myStage;
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
+        myStage = stage;
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyView.fxml")));
         String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
         root.getStylesheets().add(googleFontsCSS);
