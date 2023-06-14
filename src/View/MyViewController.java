@@ -19,6 +19,7 @@ public class MyViewController implements IView, Observer {
     private MyViewModel mVModel;
     @FXML
     private TextField textField_mazeRows;
+    @FXML
     private TextField textField_mazeColumns;
     private MazeDisplay mazeDisplay;
 
@@ -44,10 +45,11 @@ public class MyViewController implements IView, Observer {
         }
     }
 
-    private void generateMaze() {
+    public void generateMaze() {
         try {
             int rows = Integer.parseInt(textField_mazeRows.getText());
             int cols = Integer.parseInt(textField_mazeColumns.getText());
+            System.out.println("rows : "  + rows + "cols : " + cols);
             mVModel.generateMaze(rows, cols);
         } catch (NumberFormatException e) {
             // add a message to the user?

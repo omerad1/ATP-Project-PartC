@@ -23,17 +23,23 @@ public class TestView extends Application {
         String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
         root.getStylesheets().add(googleFontsCSS);
 
-        Label descLabel = (Label) root.lookup("#descLabel");
-
+        Object[] descLabel =  root.lookupAll(".descText").toArray();
+        System.out.println(descLabel);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
 
 
         double percentage = 0.0215;
-        descLabel.styleProperty().bind(
-                Bindings.concat("-fx-font-size: ", stage.widthProperty().multiply(percentage), "px;")
-        );
+
+        for (Object node : descLabel) {
+            Label tempLabel = (Label) node;
+            tempLabel.styleProperty().bind(
+                    Bindings.concat("-fx-font-size: ", stage.widthProperty().multiply(percentage), "px;")
+            );
+        }
+
+
     }
 }
 
