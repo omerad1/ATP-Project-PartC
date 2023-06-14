@@ -26,6 +26,7 @@ public class MyModel extends Observable implements IModel{
     private Solution mazeSol;
     private Server mazeGenerationServer;
     private Server mazeSolverServer;
+    private boolean reachedEnd;
 
 
     public MyModel()
@@ -34,6 +35,7 @@ public class MyModel extends Observable implements IModel{
         mazeSolverServer = new Server(5401, 1000, new ServerStrategySolveSearchProblem());
         mazeGenerationServer.start();
         mazeSolverServer.start();
+        reachedEnd = false;
     }
     @Override
     public Maze getMaze() {
@@ -149,7 +151,9 @@ public class MyModel extends Observable implements IModel{
         }
         if (tempRow != this.playerRow || tempCol != this.playerCol){
             setChanged();
-            notifyObservers("UpdatePlayerPosition");
+            if(playerRow == maze.getGoalPosition().getRow_index() && playerCol == maze.getGoalPosition().getColumn_index())
+                notifyObservers("UpdatePlayerPosition, FoundGoal");
+            else notifyObservers("UpdatePlayerPosition");
         }
     }
 
@@ -209,5 +213,12 @@ public class MyModel extends Observable implements IModel{
         status.setContentText(message);
         status.showAndWait();
     }
+
+    @Override
+    public void endGame() {
+        mazeSolverServer.stop();
+        mazeGenerationServer.stop();
+    }
+
 
 }

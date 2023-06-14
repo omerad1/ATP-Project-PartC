@@ -12,9 +12,11 @@ public interface IModel{
     public void updateCharacterLocation(KeyCode direction);
     public void assignObserver(Observer o);
     public void solveMaze();
+    public void solve();
     Solution getMazeSolution();
     void saveMaze();
     void loadMaze();
     int getPlayerRow();
     int getPlayerCol();
+    void endGame();
 }

@@ -39,7 +39,7 @@ public class MyViewController implements IView, Observer {
             if (message.contains("UpdateSolution"))
                 mazeDisplay.setMazeSolution(mVModel.getMazeSolution());
             if (message.contains("FoundGoal")) {
-                //DoSomething?
+                // todo : do something
             }
             mazeDisplay.draw();
         }

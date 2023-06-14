@@ -27,7 +27,7 @@ public class MyViewModel extends Observable implements Observer {
     }
 
     public void solveMaze(){
-        model.solveMaze();
+        model.solve();
     }
 
     public Solution getMazeSolution() {
