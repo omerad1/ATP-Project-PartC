@@ -1,7 +1,16 @@
 #AnchorPane{
-    -fx-background-image: url("../imgs/1602_2.png");
+    -fx-background-image: url("../imgs/OpenBackGround.jpg");
     -fx-background-position: center;
-    -fx-background-size: contain;
+    -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
 
+}
+
+.desc{
+    -fx-font-size: 20px bold;
+    -fx-font-family: 'Diphylleia', serif;
+}
+.descText{
+    -fx-font-size: 20px bold;
+    -fx-font-family: 'Diphylleia', serif;
 }
