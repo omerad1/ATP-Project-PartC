@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 import java.awt.event.MouseEvent;
 import java.net.URL;
@@ -55,15 +56,12 @@ public class MyViewController implements IView, Observer {
     }
 
     public void NewAction(ActionEvent actionEvent) {
-        // todo: checkBox with maze row / column ?
-        generateMaze();
+        mVModel.generateMaze(100, 100);
         actionEvent.consume();
     }
 
     public void SaveAction(ActionEvent actionEvent) {
-        // todo : check null case and print something to user ?
         mVModel.saveMaze();
-        // todo : print something to the user
         actionEvent.consume();
     }
 
@@ -89,6 +87,11 @@ public class MyViewController implements IView, Observer {
 
     public void AboutAction(ActionEvent actionEvent){
         // todo: what is the difference from help?
+    }
+
+    public void keyPressed(KeyEvent keyEvent) {
+        mVModel.movePlayer(keyEvent.getCode());
+        keyEvent.consume();
     }
 
 }
