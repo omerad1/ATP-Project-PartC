@@ -2,21 +2,21 @@ package Model;
 
 import View.TestView;
 import algorithms.mazeGenerators.Maze;
-import algorithms.search.AState;
 import algorithms.search.Solution;
 
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import Server.*;
 import Client.*;
 import IO.MyDecompressorInputStream;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyCode;
 import javafx.stage.FileChooser;
 
 import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+
 
 public class MyModel extends Observable implements IModel{
     private Maze maze;
@@ -25,6 +25,7 @@ public class MyModel extends Observable implements IModel{
     private Solution mazeSol;
     private Server mazeGenerationServer;
     private Server mazeSolverServer;
+    private boolean reachedEnd;
 
 
     public MyModel()
@@ -33,6 +34,7 @@ public class MyModel extends Observable implements IModel{
         mazeSolverServer = new Server(5401, 1000, new ServerStrategySolveSearchProblem());
         mazeGenerationServer.start();
         mazeSolverServer.start();
+        reachedEnd = false;
     }
     @Override
     public Maze getMaze() {
@@ -82,6 +84,7 @@ public class MyModel extends Observable implements IModel{
                         playerRow = maze.getStartPosition().getRow_index();
                         playerCol = maze.getStartPosition().getColumn_index();
                         setChanged();
+                        solveMaze();
                         notifyObservers("UpdateMaze, UpdatePlayerPosition, UpdateSolution");
 
                     } catch (Exception e) {
@@ -101,6 +104,8 @@ public class MyModel extends Observable implements IModel{
             //todo: throw some error?
         else {
             solveMaze();
+            setChanged();
+            notifyObservers("UpdateSolution");
         }
     }
     @Override
@@ -116,8 +121,6 @@ public class MyModel extends Observable implements IModel{
                                 toServer.writeObject(maze); //send maze to server
                                 toServer.flush();
                                 mazeSol = (Solution) fromServer.readObject();
-                                setChanged();
-                                notifyObservers("UpdateSolution");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -130,42 +133,89 @@ public class MyModel extends Observable implements IModel{
     }
 
     @Override
-    public void updateCharacterLocation(int direction) {
+    public void updateCharacterLocation(KeyCode direction) {
+        if(maze == null)
+            return;
+        int tempRow = this.playerRow;
+        int tempCol = this.playerCol;
+        switch (direction) {
+            case NUMPAD1 -> moveChar(1, -1);
+            case NUMPAD2 -> moveChar(1, 0);
+            case NUMPAD3 -> moveChar(1, 1);
+            case NUMPAD4 -> moveChar(0, -1);
+            case NUMPAD6 -> moveChar(0, 1);
+            case NUMPAD7 -> moveChar(-1, -1);
+            case NUMPAD8 -> moveChar(-1, 0);
+            case NUMPAD9 -> moveChar(-1, 1);
+        }
+        if (tempRow != this.playerRow || tempCol != this.playerCol){
+            setChanged();
+            if(playerRow == maze.getGoalPosition().getRow_index() && playerCol == maze.getGoalPosition().getColumn_index())
+                notifyObservers("UpdatePlayerPosition, FoundGoal");
+            else notifyObservers("UpdatePlayerPosition");
+        }
+    }
 
+    public void moveChar(int rowMove, int colMove)
+    {
+        int tempRow = playerRow + rowMove;
+        int tempCol = playerCol + colMove;
+        if(tempRow < maze.getRows() && tempRow > 0 && tempCol < maze.getColumns() && tempCol > 0 && maze.getMaze()[tempRow][tempCol] == 0) {
+            playerRow = tempRow;
+            playerCol = tempCol;
+        }
     }
 
 
     @Override
     public void saveMaze() {
-        FileChooser fc = new FileChooser();
-        fc.setTitle("Save Game");
-        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Game Files", "*.maze"));
-        fc.setInitialDirectory(new File(System.getProperty("user.dir")));
-
-        File file = fc.showSaveDialog(TestView.myStage);
-        if (file != null) {
-            boolean success = false;
-            try (ObjectOutputStream mazeSaver = new ObjectOutputStream(new FileOutputStream(file))) {
-                mazeSaver.writeObject(maze);
-                success = true;
-            } catch (IOException e) {
-                success = false;
-            } finally {
-                showSaveStatus(success);
-            }
+        File file = getFileFromUser("Save Game");
+        if (file == null) return;
+        boolean success;
+        try (ObjectOutputStream mazeSaver = new ObjectOutputStream(new FileOutputStream(file))) {
+            MazeData mazeData = new MazeData(maze, playerRow, playerCol, mazeSol);
+            mazeSaver.writeObject(mazeData);
+            success = true;
+        } catch (IOException e) {
+            success = false;
         }
-    }
-
-    private void showSaveStatus(boolean success) {
-        Alert status = new Alert(success ? Alert.AlertType.CONFIRMATION : Alert.AlertType.ERROR);
-        status.setContentText(success ? "Game Saved!" : "Could not save game :(\nPlease try again!");
-        status.showAndWait();
+        showAlert(success ? "Game Saved!" : "Could not save game :(\nPlease try again!", success);
     }
 
     @Override
     public void loadMaze() {
-
+        File file = getFileFromUser("Load Game");
+        if (file == null) return;
+        try (ObjectInputStream gameLoader = new ObjectInputStream(new FileInputStream(file))) {
+            MazeData mazeData = (MazeData) gameLoader.readObject();
+            maze = mazeData.getMaze();
+            playerRow = mazeData.getPlayerRow();
+            playerCol = mazeData.getPlayerCol();
+            mazeSol = mazeData.getSolution();
+            setChanged();
+            notifyObservers("mazeDisplay, solutionDisplay, playerDisplay");
+        } catch (Exception e) {
+            showAlert("Could not load game :(\nPlease try again!", false);
+        }
     }
 
+    private File getFileFromUser(String title) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle(title);
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Maze files (*.maze)", "*.maze"));
+        fileChooser.setInitialDirectory(new File(System.getProperty("./resources")));
+        return fileChooser.showSaveDialog(TestView.myStage);
+    }
 
+    private void showAlert(String message, boolean success) {
+        Alert status = new Alert(success ? Alert.AlertType.CONFIRMATION : Alert.AlertType.ERROR);
+        status.setContentText(message);
+        status.showAndWait();
+    }
+
+    @Override
+    public void endGame() {
+        mazeSolverServer.stop();
+        mazeGenerationServer.stop();
+    }
 }

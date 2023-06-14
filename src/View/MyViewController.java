@@ -1,18 +1,17 @@
 package View;
 
 import ViewModel.MyViewModel;
-import algorithms.mazeGenerators.Maze;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
-import java.awt.event.MouseEvent;
-import java.net.URL;
-import java.util.Objects;
+
 import java.util.Observable;
 import java.util.Observer;
-import java.util.ResourceBundle;
+import java.util.Optional;
 
 public class MyViewController implements IView, Observer {
 
@@ -39,7 +38,7 @@ public class MyViewController implements IView, Observer {
             if (message.contains("UpdateSolution"))
                 mazeDisplay.setMazeSolution(mVModel.getMazeSolution());
             if (message.contains("FoundGoal")) {
-                //DoSomething?
+                // todo : do something
             }
             mazeDisplay.draw();
         }
@@ -57,15 +56,12 @@ public class MyViewController implements IView, Observer {
     }
 
     public void NewAction(ActionEvent actionEvent) {
-        // todo: checkBox with maze row / column ?
-        generateMaze();
+        mVModel.generateMaze(100, 100);
         actionEvent.consume();
     }
 
     public void SaveAction(ActionEvent actionEvent) {
-        // todo : check null case and print something to user ?
         mVModel.saveMaze();
-        // todo : print something to the user
         actionEvent.consume();
     }
 
@@ -81,7 +77,16 @@ public class MyViewController implements IView, Observer {
 
     public void ExitAction(ActionEvent actionEvent)
     {
-        // todo : move to exit screen / close the app?
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Are You Sure You Want To Exit The Game?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) { // User chose to exit
+            mVModel.endGame();
+            System.exit(0);
+        }
+        // User canceled or closed the dialog
+        actionEvent.consume();
+
     }
 
     public void HelpAction(ActionEvent actionEvent)
@@ -91,6 +96,11 @@ public class MyViewController implements IView, Observer {
 
     public void AboutAction(ActionEvent actionEvent){
         // todo: what is the difference from help?
+    }
+
+    public void keyPressed(KeyEvent keyEvent) {
+        mVModel.movePlayer(keyEvent.getCode());
+        keyEvent.consume();
     }
 
 }

@@ -3,7 +3,8 @@ package ViewModel;
 import Model.IModel;
 import algorithms.mazeGenerators.Maze;
 import algorithms.search.Solution;
-import javafx.beans.InvalidationListener;
+import javafx.scene.input.KeyCode;
+
 import java.util.Observable;
 
 import java.util.Observer;
@@ -26,7 +27,7 @@ public class MyViewModel extends Observable implements Observer {
     }
 
     public void solveMaze(){
-        model.solveMaze();
+        model.solve();
     }
 
     public Solution getMazeSolution() {
@@ -51,5 +52,13 @@ public class MyViewModel extends Observable implements Observer {
 
     public int getPlayerCol() {
         return model.getPlayerCol();
+    }
+
+    public void movePlayer(KeyCode keyEvent) {
+        model.updateCharacterLocation(keyEvent);
+    }
+
+    public void endGame() {
+        model.endGame();
     }
 }
