@@ -57,4 +57,8 @@ public class MyViewModel extends Observable implements Observer {
     public void movePlayer(KeyCode keyEvent) {
         model.updateCharacterLocation(keyEvent);
     }
+
+    public void endGame() {
+        model.endGame();
+    }
 }

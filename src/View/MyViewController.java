@@ -1,19 +1,17 @@
 package View;
 
 import ViewModel.MyViewModel;
-import algorithms.mazeGenerators.Maze;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
-import java.awt.event.MouseEvent;
-import java.net.URL;
-import java.util.Objects;
+
 import java.util.Observable;
 import java.util.Observer;
-import java.util.ResourceBundle;
+import java.util.Optional;
 
 public class MyViewController implements IView, Observer {
 
@@ -77,7 +75,16 @@ public class MyViewController implements IView, Observer {
 
     public void ExitAction(ActionEvent actionEvent)
     {
-        // todo : move to exit screen / close the app?
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Are You Sure You Want To Exit The Game?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) { // User chose to exit
+            mVModel.endGame();
+            System.exit(0);
+        }
+        // User canceled or closed the dialog
+        actionEvent.consume();
+
     }
 
     public void HelpAction(ActionEvent actionEvent)

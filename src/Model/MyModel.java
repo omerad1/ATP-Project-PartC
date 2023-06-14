@@ -18,7 +18,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 
-// todo : add a reached solution state?
 public class MyModel extends Observable implements IModel{
     private Maze maze;
     private int playerRow;
@@ -219,6 +218,4 @@ public class MyModel extends Observable implements IModel{
         mazeSolverServer.stop();
         mazeGenerationServer.stop();
     }
-
-
 }
