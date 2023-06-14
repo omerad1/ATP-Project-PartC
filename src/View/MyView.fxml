@@ -14,7 +14,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1220.0" stylesheets="@MainStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
+<AnchorPane id="AnchorPane" fx:id="startBTN" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1220.0" stylesheets="@MainStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
 
    <children>
 
@@ -99,9 +99,9 @@
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font></TextField>
-      <Button layoutX="110.0" layoutY="288.0" mnemonicParsing="false" onAction="#generateMaze" opacity="0.76" prefHeight="51.0" prefWidth="117.0" styleClass="Btn_start" text="Start" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+      <Button layoutX="110.0" layoutY="285.0" mnemonicParsing="false" onAction="#generateMaze" opacity="0.85" prefHeight="51.0" prefWidth="117.0" styleClass="Btn_start" text="Start" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
          <textFill>
-            <RadialGradient centerX="0.19889502762430938" centerY="0.5758293838862559" radius="0.5">
+            <RadialGradient centerX="0.8563535911602209" centerY="0.5758293838862559" radius="0.5">
                <stops>
                   <Stop>
                      <color>
@@ -120,7 +120,11 @@
             <Font size="28.0" />
          </font>
          <effect>
-            <InnerShadow />
+            <InnerShadow choke="0.32" height="35.66" radius="26.8525" width="73.75">
+               <color>
+                  <Color red="0.6842105388641357" green="0.6113547682762146" blue="0.6113547682762146" />
+               </color>
+            </InnerShadow>
          </effect>
       </Button>
    </children>

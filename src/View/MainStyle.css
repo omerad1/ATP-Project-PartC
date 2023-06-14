@@ -14,10 +14,16 @@
     -fx-font-size: 20px bold;
     -fx-font-family: 'Diphylleia', serif;
 }
-.Btn_start{
+.Btn_start {
     -fx-font-size: 26px bold;
     -fx-font-family: 'Diphylleia', serif;
     -fx-background-image: url("../imgs/pexels-dana-tentis-370799.jpg");
     -fx-border-radius: 5;
-
 }
+
+.Btn_pressed {
+    -fx-font-size: 26px bold;
+    -fx-font-family: 'Diphylleia', serif;
+    -fx-border-radius: 5;
+}
+
