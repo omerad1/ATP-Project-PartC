@@ -25,5 +25,6 @@
     -fx-font-size: 26px bold;
     -fx-font-family: 'Diphylleia', serif;
     -fx-border-radius: 5;
+    -fx-background-image: url("../imgs/helpBackground.jpg");
 }
 

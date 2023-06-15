@@ -11,3 +11,17 @@ AnchorPane{
     -fx-font-size: 25px bold;
     -fx-font-family: 'Diphylleia', serif;
 }
+.Btn_start {
+    -fx-font-size: 26px bold;
+    -fx-font-family: 'Diphylleia', serif;
+    -fx-background-color: #b1a889;
+    -fx-border-radius: 5;
+}
+
+.Btn_pressed {
+    -fx-font-size: 26px bold;
+    -fx-font-family: 'Diphylleia', serif;
+    -fx-border-radius: 5;
+    -fx-background-image: url("../imgs/helpBackground.jpg");
+
+}

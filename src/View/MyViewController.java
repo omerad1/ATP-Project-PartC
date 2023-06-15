@@ -12,7 +12,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -25,6 +29,7 @@ import java.util.Optional;
 
 public class MyViewController implements IView, Observer {
 
+    private ImageView Hero;
     private MyViewModel mVModel;
     @FXML
     private TextField textField_mazeRows;
@@ -56,18 +61,10 @@ public class MyViewController implements IView, Observer {
 
     public void generateMaze(ActionEvent event) {
         try {
-            Button btm = (Button)event.getSource();
-            btm.getStyleClass().add("Btn_pressed");
-            btm.getStyleClass().remove("Btn_start");
-            PauseTransition pause = new PauseTransition(Duration.millis(100));
-            pause.setOnFinished(e -> {
-                btm.getStyleClass().add("Btn_start");
-                btm.getStyleClass().remove("Btn_pressed");
-            });
-            pause.play();
+
             int rows = Integer.parseInt(textField_mazeRows.getText());
             int cols = Integer.parseInt(textField_mazeColumns.getText());
-            System.out.println("rows : "  + rows + "cols : " + cols);
+            System.out.println("rows : " + rows + "cols : " + cols);
 
             mVModel.generateMaze(rows, cols);
         } catch (NumberFormatException e) {
@@ -90,13 +87,11 @@ public class MyViewController implements IView, Observer {
         actionEvent.consume();
     }
 
-    public void PropertiesAction(ActionEvent actionEvent)
-    {
+    public void PropertiesAction(ActionEvent actionEvent) {
         // todo : die
     }
 
-    public void ExitAction(ActionEvent actionEvent)
-    {
+    public void ExitAction(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Are You Sure You Want To Exit The Game?");
         Optional<ButtonType> result = alert.showAndWait();
@@ -108,9 +103,6 @@ public class MyViewController implements IView, Observer {
         actionEvent.consume();
 
     }
-
-
-
 
 
     public void keyPressed(KeyEvent keyEvent) {
@@ -150,6 +142,7 @@ public class MyViewController implements IView, Observer {
             );
         }
     }
+
     public void HelpAction(ActionEvent event) throws IOException {
         String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Help.fxml")));
@@ -183,6 +176,63 @@ public class MyViewController implements IView, Observer {
         }
     }
 
-    public void backToMenu(ActionEvent event) {
+    public void backToMenu(ActionEvent event)  {
+        Button btm = (Button) event.getSource();
+        btm.getStyleClass().add("Btn_pressed");
+        btm.getStyleClass().remove("Btn_start");
+
+        PauseTransition pause = new PauseTransition(Duration.millis(100));
+        pause.setOnFinished(e -> {
+            btm.getStyleClass().add("Btn_start");
+            btm.getStyleClass().remove("Btn_pressed");
+
+            try {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyView.fxml")));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+
+        pause.play();
     }
+
+    public void AssingHero(MouseEvent mouseEvent) {
+        Hero = (ImageView) mouseEvent.getSource();
+        System.out.println(Hero);
+    }
+    public void startGame(ActionEvent event){
+        Button btm = (Button) event.getSource();
+        btm.getStyleClass().add("Btn_pressed");
+        btm.getStyleClass().remove("Btn_start");
+
+        PauseTransition pause = new PauseTransition(Duration.millis(100));
+        pause.setOnFinished(e -> {
+            btm.getStyleClass().add("Btn_start");
+            btm.getStyleClass().remove("Btn_pressed");
+
+
+            try {
+
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CharacterChoose.fxml")));
+
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.setFullScreen(true);
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        pause.play();
+
+
+    }
+
 }
