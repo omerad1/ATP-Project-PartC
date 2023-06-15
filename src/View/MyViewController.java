@@ -109,10 +109,7 @@ public class MyViewController implements IView, Observer {
 
     }
 
-    public void HelpAction(ActionEvent actionEvent)
-    {
-        // todo : move to help screen or open a data box on screen
-    }
+
 
 
 
@@ -153,7 +150,38 @@ public class MyViewController implements IView, Observer {
             );
         }
     }
+    public void HelpAction(ActionEvent event) throws IOException {
+        String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Help.fxml")));
+        Scene scene2 = new Scene(root);
 
+        MenuItem menuItem = (MenuItem) event.getSource();
+
+        // Find the root Parent node
+        Parent parent = (Parent) menuItem.getParentPopup().getOwnerNode();
+        while (parent.getParent() != null) {
+            parent = parent.getParent();
+        }
+
+        Scene scene = parent.getScene();
+
+        // Get the Window (Stage) associated with the Scene
+        Stage stage = (Stage) scene.getWindow();
+
+        root.getStylesheets().add(googleFontsCSS);
+        stage.setScene(scene2);
+        stage.show();
+
+        Object[] descLabel = root.lookupAll(".descText").toArray();
+        double percentage = 0.0215;
+
+        for (Object node : descLabel) {
+            Label tempLabel = (Label) node;
+            tempLabel.styleProperty().bind(
+                    Bindings.concat("-fx-font-size: ", stage.widthProperty().multiply(percentage), "px;")
+            );
+        }
+    }
 
     public void backToMenu(ActionEvent event) {
     }

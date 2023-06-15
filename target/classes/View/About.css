@@ -1,7 +1,13 @@
-#AnchorPane{
-    -fx-background-image: url("../imgs/old-book-open-dark-wood-background.jpg");
+AnchorPane{
+    -fx-background-image: url("../imgs/helpBackground.jpg");
     -fx-background-position: center;
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
 
+
+}
+
+.desc{
+    -fx-font-size: 25px bold;
+    -fx-font-family: 'Diphylleia', serif;
 }
