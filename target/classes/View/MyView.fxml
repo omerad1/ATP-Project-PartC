@@ -99,7 +99,7 @@
             <font>
                 <Font name="Consolas Bold" size="20.0" />
             </font></TextField>
-        <Button layoutX="110.0" layoutY="285.0" mnemonicParsing="false" onAction="#generateMaze" opacity="0.85" prefHeight="51.0" prefWidth="117.0" styleClass="Btn_start" text="Start" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+        <Button layoutX="110.0" layoutY="285.0" mnemonicParsing="false" onAction="#startGame" opacity="0.85" prefHeight="51.0" prefWidth="117.0" styleClass="Btn_start" text="Start" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
             <textFill>
                 <RadialGradient centerX="0.8563535911602209" centerY="0.5758293838862559" radius="0.5">
                     <stops>

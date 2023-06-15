@@ -224,7 +224,6 @@ public class MyViewController implements IView, Observer {
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.setResizable(false);
-                stage.setFullScreen(true);
                 stage.show();
             } catch (IOException ex) {
                 ex.printStackTrace();
