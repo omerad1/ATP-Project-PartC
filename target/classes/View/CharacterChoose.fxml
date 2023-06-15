@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane  maxHeight="953.0" maxWidth="1060.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1220.0" stylesheets="@CharacterPick.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
+
+   <children>
+      <MenuBar blendMode="DIFFERENCE" prefHeight="25.0" prefWidth="673.0" styleClass="desc" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#NewAction" text="New" />
+                  <MenuItem mnemonicParsing="false" onAction="#SaveAction" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#LoadAction" text="Load" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Options">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#PropertiesAction" text="Properties" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Exit">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#ExitAction" text="Exit :(" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#HelpAction" text="Help" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="About">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#AboutAction" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+
+      <ImageView fitHeight="178.0" fitWidth="151.0" layoutX="474.0" layoutY="107.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="668.0" AnchorPane.leftAnchor="474.0" AnchorPane.rightAnchor="436.4146728515625" AnchorPane.topAnchor="107.0">
+         <image>
+            <Image url="@../Resources/Images/abir-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="189.0" fitWidth="151.0" layoutX="779.0" layoutY="399.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="376.4685516357422" AnchorPane.leftAnchor="779.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="399.0">
+         <image>
+            <Image url="@../Resources/Images/elf-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="178.0" fitWidth="187.0" layoutX="139.0" layoutY="411.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="369.3846130371094" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="734.0" AnchorPane.topAnchor="411.0">
+         <image>
+            <Image url="@../Resources/Images/lohemet-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="165.0" fitWidth="167.0" layoutX="459.0" layoutY="718.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="459.0" AnchorPane.rightAnchor="436.98802185058594" AnchorPane.topAnchor="718.0">
+         <image>
+            <Image url="@../Resources/Images/kosem-removebg-preview.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
