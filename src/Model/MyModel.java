@@ -23,8 +23,8 @@ public class MyModel extends Observable implements IModel{
     private int playerRow;
     private int playerCol;
     private Solution mazeSol;
-    private Server mazeGenerationServer;
-    private Server mazeSolverServer;
+    private final Server mazeGenerationServer;
+    private final Server mazeSolverServer;
     private boolean reachedEnd;
 
 
@@ -84,6 +84,7 @@ public class MyModel extends Observable implements IModel{
                         maze.print();
                         playerRow = maze.getStartPosition().getRow_index();
                         playerCol = maze.getStartPosition().getColumn_index();
+                        reachedEnd = false;
                         setChanged();
                         solveMaze();
                         notifyObservers("UpdateMaze, UpdatePlayerPosition, UpdateSolution");
@@ -113,21 +114,21 @@ public class MyModel extends Observable implements IModel{
     public void solveMaze() {
         try {
             Client client = new Client(InetAddress.getLocalHost(), 5401, new IClientStrategy() {
-                        @Override
-                        public void clientStrategy(InputStream inFromServer, OutputStream outToServer) {
-                            try {
-                                ObjectOutputStream toServer = new ObjectOutputStream(outToServer);
-                                ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
-                                toServer.flush();
-                                toServer.writeObject(maze); //send maze to server
-                                toServer.flush();
-                                mazeSol = (Solution) fromServer.readObject();
-                                System.out.println(mazeSol.getSolutionPath());
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
+                @Override
+                public void clientStrategy(InputStream inFromServer, OutputStream outToServer) {
+                    try {
+                        ObjectOutputStream toServer = new ObjectOutputStream(outToServer);
+                        ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
+                        toServer.flush();
+                        toServer.writeObject(maze); //send maze to server
+                        toServer.flush();
+                        mazeSol = (Solution) fromServer.readObject();
+                        System.out.println(mazeSol.getSolutionPath());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
             client.communicateWithServer();
         } catch (UnknownHostException e) {
             e.printStackTrace();
@@ -136,7 +137,7 @@ public class MyModel extends Observable implements IModel{
 
     @Override
     public void updateCharacterLocation(KeyCode direction) {
-        if(maze == null)
+        if(maze == null || reachedEnd)
             return;
         int tempRow = this.playerRow;
         int tempCol = this.playerCol;
@@ -152,8 +153,10 @@ public class MyModel extends Observable implements IModel{
         }
         if (tempRow != this.playerRow || tempCol != this.playerCol){
             setChanged();
-            if(playerRow == maze.getGoalPosition().getRow_index() && playerCol == maze.getGoalPosition().getColumn_index())
+            if(playerRow == maze.getGoalPosition().getRow_index() && playerCol == maze.getGoalPosition().getColumn_index()) {
+                reachedEnd = true;
                 notifyObservers("UpdatePlayerPosition, FoundGoal");
+            }
             else notifyObservers("UpdatePlayerPosition");
         }
     }
@@ -170,8 +173,7 @@ public class MyModel extends Observable implements IModel{
 
 
     @Override
-    public void saveMaze() {
-        File file = getFileFromUser("Save Game");
+    public void saveMaze(File file) {
         if (file == null) return;
         boolean success;
         try (ObjectOutputStream mazeSaver = new ObjectOutputStream(new FileOutputStream(file))) {
@@ -185,8 +187,7 @@ public class MyModel extends Observable implements IModel{
     }
 
     @Override
-    public void loadMaze() {
-        File file = getFileFromUser("Load Game");
+    public void loadMaze(File file) {
         if (file == null) return;
         try (ObjectInputStream gameLoader = new ObjectInputStream(new FileInputStream(file))) {
             MazeData mazeData = (MazeData) gameLoader.readObject();
@@ -201,14 +202,6 @@ public class MyModel extends Observable implements IModel{
         }
     }
 
-    private File getFileFromUser(String title) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle(title);
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Maze files (*.maze)", "*.maze"));
-        fileChooser.setInitialDirectory(new File(System.getProperty("./resources")));
-        return fileChooser.showSaveDialog(TestView.myStage);
-    }
-
     private void showAlert(String message, boolean success) {
         Alert status = new Alert(success ? Alert.AlertType.CONFIRMATION : Alert.AlertType.ERROR);
         status.setContentText(message);
@@ -219,5 +212,31 @@ public class MyModel extends Observable implements IModel{
     public void endGame() {
         mazeSolverServer.stop();
         mazeGenerationServer.stop();
+    }
+
+    @Override
+    public void restartMaze() {
+        if (maze==null)
+            return;
+
+        playerRow = maze.getStartPosition().getRow_index();
+        playerCol = maze.getStartPosition().getColumn_index();
+        reachedEnd = false;
+
+        setChanged();
+        notifyObservers("UpdatePlayerPosition");
+    }
+
+    @Override
+    public void setMazeSolvingAlgorithm(String algo) throws IOException {
+        Configurations config = Configurations.getInstance();
+//        config.setMazeSearchingAlgorithm(algo);
+        solve();
+    }
+    @Override
+    public void setMazeGeneratingAlgorithmAlgorithm(String algo) throws IOException {
+        Configurations config = Configurations.getInstance();
+//        config.setMazeGeneratingAlgorithm(algo);
+        generateMaze(this.maze.getRows(), this.maze.getColumns());
     }
 }

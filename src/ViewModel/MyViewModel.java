@@ -5,6 +5,7 @@ import algorithms.mazeGenerators.Maze;
 import algorithms.search.Solution;
 import javafx.scene.input.KeyCode;
 
+import java.io.File;
 import java.util.Observable;
 
 import java.util.Observer;
@@ -38,12 +39,12 @@ public class MyViewModel extends Observable implements Observer {
         model.generateMaze(rows, cols);
     }
 
-    public void saveMaze() {
-        model.saveMaze();
+    public void saveMaze(File file) {
+        model.saveMaze(file);
     }
 
-    public void loadMaze() {
-        model.loadMaze();
+    public void loadMaze(File file) {
+        model.loadMaze(file);
     }
 
     public int getPlayerRow() {

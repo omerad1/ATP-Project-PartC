@@ -17,10 +17,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Observable;
@@ -68,7 +70,9 @@ public class MyViewController implements IView, Observer {
 
             mVModel.generateMaze(rows, cols);
         } catch (NumberFormatException e) {
-            // add a message to the user?
+            Alert prob = new Alert(Alert.AlertType.ERROR);
+            prob.setContentText("Please Enter Valid Maze Sizes");
+            prob.showAndWait();
         }
     }
 
@@ -78,12 +82,20 @@ public class MyViewController implements IView, Observer {
     }
 
     public void SaveAction(ActionEvent actionEvent) {
-        mVModel.saveMaze();
+        if(mVModel.getMaze() == null)
+        {
+            Alert prob = new Alert(Alert.AlertType.ERROR);
+            prob.setContentText("You Can't Save a Maze Before Generation");
+            prob.showAndWait();
+        }
+        File file = getFileFromUser("Save Game");
+        mVModel.saveMaze(file);
         actionEvent.consume();
     }
 
     public void LoadAction(ActionEvent actionEvent) {
-        mVModel.loadMaze();
+        File file = getFileFromUser("Load Game");
+        mVModel.loadMaze(file);
         actionEvent.consume();
     }
 
@@ -233,6 +245,14 @@ public class MyViewController implements IView, Observer {
         pause.play();
 
 
+    }
+
+    private File getFileFromUser(String title) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle(title);
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Maze files (*.maze)", "*.maze"));
+        fileChooser.setInitialDirectory(new File(System.getProperty("./resources")));
+        return fileChooser.showSaveDialog(TestView.myStage);
     }
 
 }
