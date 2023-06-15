@@ -1,5 +1,8 @@
 package View;
 
+import Model.IModel;
+import Model.MyModel;
+import ViewModel.MyViewModel;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXMLLoader;
@@ -18,16 +21,27 @@ public class TestView extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        myStage = stage;
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyView.fxml")));
         String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
+
+
+        myStage = stage;
+        FXMLLoader fxmlLoader= new FXMLLoader(Objects.requireNonNull(getClass().getResource("MyView.fxml")));
+        Parent root = fxmlLoader.load();
         root.getStylesheets().add(googleFontsCSS);
+
+        IModel model = new MyModel();
+        MyViewModel myViewModel = new MyViewModel(model);
+        MyViewController myViewController = fxmlLoader.getController();
+        myViewController.setViewModel(myViewModel);
+
+
 
         Object[] descLabel =  root.lookupAll(".descText").toArray();
         System.out.println(descLabel);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
 
 
         double percentage = 0.0215;

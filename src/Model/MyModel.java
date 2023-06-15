@@ -80,7 +80,8 @@ public class MyModel extends Observable implements IModel{
                         is.read(decompressedMaze); //Fill decompressedMaze with bytes
 
                         // initialize needed components
-                        Maze maze = new Maze(decompressedMaze);
+                        maze = new Maze(decompressedMaze);
+                        maze.print();
                         playerRow = maze.getStartPosition().getRow_index();
                         playerCol = maze.getStartPosition().getColumn_index();
                         setChanged();
@@ -121,6 +122,7 @@ public class MyModel extends Observable implements IModel{
                                 toServer.writeObject(maze); //send maze to server
                                 toServer.flush();
                                 mazeSol = (Solution) fromServer.readObject();
+                                System.out.println(mazeSol.getSolutionPath());
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

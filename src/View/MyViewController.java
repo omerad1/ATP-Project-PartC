@@ -1,14 +1,24 @@
 package View;
 
+import Model.IModel;
+import Model.MyModel;
 import ViewModel.MyViewModel;
+import javafx.animation.PauseTransition;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
+import java.io.IOException;
+import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
@@ -44,11 +54,21 @@ public class MyViewController implements IView, Observer {
         }
     }
 
-    public void generateMaze() {
+    public void generateMaze(ActionEvent event) {
         try {
+            Button btm = (Button)event.getSource();
+            btm.getStyleClass().add("Btn_pressed");
+            btm.getStyleClass().remove("Btn_start");
+            PauseTransition pause = new PauseTransition(Duration.millis(100));
+            pause.setOnFinished(e -> {
+                btm.getStyleClass().add("Btn_start");
+                btm.getStyleClass().remove("Btn_pressed");
+            });
+            pause.play();
             int rows = Integer.parseInt(textField_mazeRows.getText());
             int cols = Integer.parseInt(textField_mazeColumns.getText());
             System.out.println("rows : "  + rows + "cols : " + cols);
+
             mVModel.generateMaze(rows, cols);
         } catch (NumberFormatException e) {
             // add a message to the user?
@@ -94,13 +114,47 @@ public class MyViewController implements IView, Observer {
         // todo : move to help screen or open a data box on screen
     }
 
-    public void AboutAction(ActionEvent actionEvent){
-        // todo: what is the difference from help?
-    }
+
 
     public void keyPressed(KeyEvent keyEvent) {
         mVModel.movePlayer(keyEvent.getCode());
         keyEvent.consume();
     }
 
+    public void AboutAction(ActionEvent event) throws IOException {
+        String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("About.fxml")));
+        Scene scene2 = new Scene(root);
+
+        MenuItem menuItem = (MenuItem) event.getSource();
+
+        // Find the root Parent node
+        Parent parent = (Parent) menuItem.getParentPopup().getOwnerNode();
+        while (parent.getParent() != null) {
+            parent = parent.getParent();
+        }
+
+        Scene scene = parent.getScene();
+
+        // Get the Window (Stage) associated with the Scene
+        Stage stage = (Stage) scene.getWindow();
+
+        root.getStylesheets().add(googleFontsCSS);
+        stage.setScene(scene2);
+        stage.show();
+
+        Object[] descLabel = root.lookupAll(".descText").toArray();
+        double percentage = 0.0215;
+
+        for (Object node : descLabel) {
+            Label tempLabel = (Label) node;
+            tempLabel.styleProperty().bind(
+                    Bindings.concat("-fx-font-size: ", stage.widthProperty().multiply(percentage), "px;")
+            );
+        }
+    }
+
+
+    public void backToMenu(ActionEvent event) {
+    }
 }
