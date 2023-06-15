@@ -1,60 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@MainStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
+<AnchorPane id="AnchorPane" fx:id="startBTN" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1220.0" stylesheets="@MainStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
 
-   <children>
+    <children>
 
-      <MenuBar blendMode="DIFFERENCE" prefHeight="25.0" prefWidth="673.0" styleClass="desc" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#NewAction" text="New" />
-                  <MenuItem mnemonicParsing="false" onAction="#SaveAction" text="Save" />
-                  <MenuItem mnemonicParsing="false" onAction="#LoadAction" text="Load" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Options">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#PropertiesAction" text="Properties" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Exit">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#ExitAction" text="Exit :(" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#HelpAction" text="Help" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="About">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#AboutAction" text="About" />
-               </items>
-            </Menu>
-        </menus>
-      </MenuBar>
-      <Label id="descLabel" alignment="CENTER" layoutX="23.0" layoutY="31.0" minWidth="-Infinity" opacity="0.74" prefHeight="76.0" prefWidth="554.0" styleClass="descText" text="Do you dare to enter the realm? Unlock its secrets by conquering the maze that lies before you!" textAlignment="CENTER" textFill="#ebe1e1" textOverrun="CLIP" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
-         <font>
-            <Font size="25.0" />
-         </font>
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color red="0.40789473056793213" green="0.03210282698273659" blue="0.03210282698273659" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Label>
-   </children>
+        <MenuBar blendMode="DIFFERENCE" prefHeight="25.0" prefWidth="673.0" styleClass="desc" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#NewAction" text="New" />
+                        <MenuItem mnemonicParsing="false" onAction="#SaveAction" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#LoadAction" text="Load" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Options">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#PropertiesAction" text="Properties" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Exit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#ExitAction" text="Exit :(" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#HelpAction" text="Help" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="About">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#AboutAction" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <Label id="descLabel" alignment="CENTER" layoutX="23.0" layoutY="31.0" minWidth="-Infinity" opacity="0.74" prefHeight="76.0" prefWidth="554.0" styleClass="descText" text="Do you dare to enter the realm? Unlock its secrets by conquering the maze that lies before you!" textAlignment="CENTER" textFill="#ebe1e1" textOverrun="CLIP" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
+            <font>
+                <Font size="25.0" />
+            </font>
+            <effect>
+                <DropShadow>
+                    <color>
+                        <Color red="0.40789473056793213" green="0.03210282698273659" blue="0.03210282698273659" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Label>
+        <TextField fx:id="textField_mazeColumns" layoutX="168.0" layoutY="217.0" opacity="0.65" prefHeight="34.0" prefWidth="155.0" AnchorPane.leftAnchor="168.0">
+            <effect>
+                <DropShadow />
+            </effect>
+            <font>
+                <Font name="Consolas Bold" size="20.0" />
+            </font></TextField>
+        <Label id="row" alignment="CENTER" layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" opacity="0.74" prefHeight="57.0" prefWidth="140.0" styleClass="descText" text="Height" textFill="#bcc0e4" textOverrun="CLIP" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="108.0">
+            <font>
+                <Font size="25.0" />
+            </font>
+            <effect>
+                <DropShadow>
+                    <color>
+                        <Color red="0.40789473056793213" green="0.03210282698273659" blue="0.03210282698273659" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Label>
+        <Label id="col" alignment="CENTER" layoutY="205.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.74" prefHeight="57.0" prefWidth="140.0" styleClass="descText" text="Width:" textFill="#bcc0e3" textOverrun="CLIP" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="205.0">
+            <font>
+                <Font size="25.0" />
+            </font>
+            <effect>
+                <DropShadow>
+                    <color>
+                        <Color red="0.40789473056793213" green="0.03210282698273659" blue="0.03210282698273659" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Label>
+        <TextField fx:id="textField_mazeRows" layoutX="168.0" layoutY="124.0" opacity="0.65" prefHeight="34.0" prefWidth="155.0" AnchorPane.leftAnchor="168.0">
+            <effect>
+                <DropShadow />
+            </effect>
+            <font>
+                <Font name="Consolas Bold" size="20.0" />
+            </font></TextField>
+        <Button layoutX="110.0" layoutY="285.0" mnemonicParsing="false" onAction="#generateMaze" opacity="0.85" prefHeight="51.0" prefWidth="117.0" styleClass="Btn_start" text="Start" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+            <textFill>
+                <RadialGradient centerX="0.8563535911602209" centerY="0.5758293838862559" radius="0.5">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="1.0" green="1.0" blue="1.0" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </RadialGradient>
+            </textFill>
+            <font>
+                <Font size="28.0" />
+            </font>
+            <effect>
+                <InnerShadow choke="0.32" height="35.66" radius="26.8525" width="73.75">
+                    <color>
+                        <Color red="0.6842105388641357" green="0.6113547682762146" blue="0.6113547682762146" />
+                    </color>
+                </InnerShadow>
+            </effect>
+        </Button>
+    </children>
 </AnchorPane>
