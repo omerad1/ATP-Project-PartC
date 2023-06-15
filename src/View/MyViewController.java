@@ -30,19 +30,25 @@ import java.util.Observer;
 import java.util.Optional;
 
 public class MyViewController implements IView, Observer {
-
-    private ImageView Hero;
+    public Parent root;
+    public Scene scene;
+    public Stage stage;
+    private Image Hero;
     private MyViewModel mVModel;
     @FXML
     private TextField textField_mazeRows;
     @FXML
     private TextField textField_mazeColumns;
-    private MazeDisplay mazeDisplay;
+    @FXML
+    public MazeDisplay mazeDisplay;
+    private int rows = 10;
+    private int cols = 10;
 
     public void setViewModel(MyViewModel viewModel) {
         this.mVModel = viewModel;
         this.mVModel.addObserver(this);
     }
+
 
     @Override
     public void update(Observable o, Object arg) {
@@ -61,20 +67,6 @@ public class MyViewController implements IView, Observer {
         }
     }
 
-    public void generateMaze(ActionEvent event) {
-        try {
-
-            int rows = Integer.parseInt(textField_mazeRows.getText());
-            int cols = Integer.parseInt(textField_mazeColumns.getText());
-            System.out.println("rows : " + rows + "cols : " + cols);
-
-            mVModel.generateMaze(rows, cols);
-        } catch (NumberFormatException e) {
-            Alert prob = new Alert(Alert.AlertType.ERROR);
-            prob.setContentText("Please Enter Valid Maze Sizes");
-            prob.showAndWait();
-        }
-    }
 
     public void NewAction(ActionEvent actionEvent) {
         mVModel.generateMaze(100, 100);
@@ -100,7 +92,7 @@ public class MyViewController implements IView, Observer {
     }
 
     public void PropertiesAction(ActionEvent actionEvent) {
-        // todo : die
+        // todo : die !
     }
 
     public void ExitAction(ActionEvent actionEvent) {
@@ -199,9 +191,9 @@ public class MyViewController implements IView, Observer {
             btm.getStyleClass().remove("Btn_pressed");
 
             try {
-                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyView.fxml")));
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyView.fxml")));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
@@ -214,10 +206,31 @@ public class MyViewController implements IView, Observer {
     }
 
     public void AssingHero(MouseEvent mouseEvent) {
-        Hero = (ImageView) mouseEvent.getSource();
-        System.out.println(Hero);
+        Hero = ((ImageView)(mouseEvent.getSource())).getImage();
+        System.out.println(rows);
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mazeDisplay.fxml")));
+            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        mazeDisplay.setHero(Hero);
+        mVModel.generateMaze(rows, cols);
+        //display maze......
     }
     public void startGame(ActionEvent event){
+        try {
+            rows = Integer.parseInt(textField_mazeRows.getText());
+            cols = Integer.parseInt(textField_mazeColumns.getText());
+        } catch (NumberFormatException e) {
+            Alert prob = new Alert(Alert.AlertType.ERROR);
+            prob.setContentText("Please Enter Valid Maze Sizes");
+            prob.showAndWait();
+            return;
+        }
         Button btm = (Button) event.getSource();
         btm.getStyleClass().add("Btn_pressed");
         btm.getStyleClass().remove("Btn_start");
@@ -229,17 +242,16 @@ public class MyViewController implements IView, Observer {
 
 
             try {
-
-                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CharacterChoose.fxml")));
-
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CharacterChoose.fxml")));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
                 stage.setScene(scene);
-                stage.setResizable(false);
                 stage.show();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+
+                } catch(IOException ex){
+                    ex.printStackTrace();
+                }
+
         });
         pause.play();
 
