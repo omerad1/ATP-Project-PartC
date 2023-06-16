@@ -18,8 +18,6 @@ public class MazeDisplay extends Canvas {
     Solution solution;
     Image Hero;
 
-
-
     public void setMaze(Maze maze) {
         this.maze = maze;
     }
@@ -61,27 +59,28 @@ public class MazeDisplay extends Canvas {
                         }
                     }
                 }
-                double h_player = playerRow * cellHeight;
-                double w_player = playerCol * cellWidth;
-                graphicsContext.drawImage(Hero,w_player,h_player,cellWidth,cellHeight);
+
             }
+            double h_player = playerRow * cellHeight;
+            double w_player = playerCol * cellWidth;
+            graphicsContext.drawImage(Hero,w_player,h_player,cellWidth,cellHeight);
         }
     }
 
-            public void setHero(Image hero) {
-                Hero = hero;
-            }
+    public void setHero(Image hero) {
+        Hero = hero;
+    }
 
-            public void setPlayerPos ( int playerRow, int playerCol)
-            {
-                this.playerRow = playerRow;
-                this.playerCol = playerCol;
-            }
+    public void setPlayerPos ( int playerRow, int playerCol)
+    {
+        this.playerRow = playerRow;
+        this.playerCol = playerCol;
+    }
 
-            public void setMazeSolution (Solution sol)
-            {
-                this.solution = sol;
-            }
+    public void setMazeSolution (Solution sol)
+    {
+        this.solution = sol;
+    }
 
 
-        }
+}

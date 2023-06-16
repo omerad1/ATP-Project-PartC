@@ -26,6 +26,7 @@ public class TestView extends Application {
 
         myStage = stage;
         FXMLLoader fxmlLoader= new FXMLLoader(Objects.requireNonNull(getClass().getResource("MyView.fxml")));
+        fxmlLoader.setController(new MyViewController());
         Parent root = fxmlLoader.load();
         root.getStylesheets().add(googleFontsCSS);
 

@@ -41,8 +41,8 @@ public class MyViewController implements IView, Observer {
     private TextField textField_mazeColumns;
     @FXML
     public MazeDisplay mazeDisplay;
-    private int rows = 10;
-    private int cols = 10;
+    private int rows;
+    private int cols;
 
     public void setViewModel(MyViewModel viewModel) {
         this.mVModel = viewModel;
@@ -116,8 +116,10 @@ public class MyViewController implements IView, Observer {
 
     public void AboutAction(ActionEvent event) throws IOException {
         String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("About.fxml")));
-        Scene scene2 = new Scene(root);
+        FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("About.fxml")));
+        fxmlLoader.setController(this);
+        root = fxmlLoader.load();
+        scene = new Scene(root);
 
         MenuItem menuItem = (MenuItem) event.getSource();
 
@@ -127,13 +129,13 @@ public class MyViewController implements IView, Observer {
             parent = parent.getParent();
         }
 
-        Scene scene = parent.getScene();
+        Scene scene2 = parent.getScene();
 
         // Get the Window (Stage) associated with the Scene
-        Stage stage = (Stage) scene.getWindow();
+        stage = (Stage) scene2.getWindow();
 
         root.getStylesheets().add(googleFontsCSS);
-        stage.setScene(scene2);
+        stage.setScene(scene);
         stage.show();
 
         Object[] descLabel = root.lookupAll(".descText").toArray();
@@ -149,8 +151,10 @@ public class MyViewController implements IView, Observer {
 
     public void HelpAction(ActionEvent event) throws IOException {
         String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Help.fxml")));
-        Scene scene2 = new Scene(root);
+        FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Help.fxml")));
+        fxmlLoader.setController(this);
+        root = fxmlLoader.load();
+        scene = new Scene(root);
 
         MenuItem menuItem = (MenuItem) event.getSource();
 
@@ -160,13 +164,13 @@ public class MyViewController implements IView, Observer {
             parent = parent.getParent();
         }
 
-        Scene scene = parent.getScene();
+        Scene scene2 = parent.getScene();
 
         // Get the Window (Stage) associated with the Scene
-        Stage stage = (Stage) scene.getWindow();
+        stage = (Stage) scene2.getWindow();
 
         root.getStylesheets().add(googleFontsCSS);
-        stage.setScene(scene2);
+        stage.setScene(scene);
         stage.show();
 
         Object[] descLabel = root.lookupAll(".descText").toArray();
@@ -191,11 +195,14 @@ public class MyViewController implements IView, Observer {
             btm.getStyleClass().remove("Btn_pressed");
 
             try {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyView.fxml")));
+                FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("MyView.fxml")));
+                fxmlLoader.setController(this);
+                root = fxmlLoader.load();
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+                System.out.println(mazeDisplay);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -207,9 +214,11 @@ public class MyViewController implements IView, Observer {
 
     public void AssingHero(MouseEvent mouseEvent) {
         Hero = ((ImageView)(mouseEvent.getSource())).getImage();
-        System.out.println(rows);
+        System.out.println(mazeDisplay);
         try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mazeDisplay.fxml")));
+            FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("mazeDisplay.fxml")));
+            fxmlLoader.setController(this);
+            root = fxmlLoader.load();
             stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -242,7 +251,10 @@ public class MyViewController implements IView, Observer {
 
 
             try {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CharacterChoose.fxml")));
+
+                FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("CharacterChoose.fxml")));
+                fxmlLoader.setController(this);
+                root = fxmlLoader.load();
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
