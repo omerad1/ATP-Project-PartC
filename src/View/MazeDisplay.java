@@ -12,11 +12,16 @@ import java.io.FileNotFoundException;
 
 public class MazeDisplay extends Canvas {
 
-    int playerRow =0;
-    int playerCol =0;
+    int playerRow = 0;
+    int playerCol = 0;
     Maze maze;
     Solution solution;
-    Image Hero;
+    Image hero;
+
+    public MazeDisplay() {
+        widthProperty().addListener(e -> draw());
+        heightProperty().addListener(e -> draw());
+    }
 
     public void setMaze(Maze maze) {
         this.maze = maze;
@@ -25,8 +30,6 @@ public class MazeDisplay extends Canvas {
     public void draw() {
         if (maze != null) {
             int[][] board = maze.getMaze();
-
-
             double canvasHeight = getHeight();
             double canvasWidth = getWidth();
             int nRows = maze.getRows();
@@ -37,18 +40,16 @@ public class MazeDisplay extends Canvas {
 
             GraphicsContext graphicsContext = getGraphicsContext2D();
             graphicsContext.clearRect(0, 0, canvasWidth, canvasHeight);
-            graphicsContext.setFill(Color.WHITESMOKE);
 
             Image wallImage = null;
             try {
-                wallImage = new Image(new FileInputStream("../Resources/Images/wall.jpg"));
+                wallImage = new Image(new FileInputStream("C:\\Users\\omera\\OneDrive\\שולחן העבודה\\לימודים\\נושאים מתקדמים בתכנות\\ATP-Project-PartC\\ATP-Project-PartC\\src\\imgs\\wall.jpg"));
             } catch (FileNotFoundException e) {
                 System.out.println();
             }
 
             for (int i = 0; i < nRows; i++) {
                 for (int j = 0; j < nCols; j++) {
-
                     if (board[i][j] == 1) {
                         h = i * cellHeight;
                         w = j * cellWidth;
@@ -59,28 +60,28 @@ public class MazeDisplay extends Canvas {
                         }
                     }
                 }
-
             }
-            double h_player = playerRow * cellHeight;
-            double w_player = playerCol * cellWidth;
-            graphicsContext.drawImage(Hero,w_player,h_player,cellWidth,cellHeight);
+
+            double hPlayer = playerRow * cellHeight;
+            double wPlayer = playerCol * cellWidth;
+            graphicsContext.drawImage(hero, wPlayer, hPlayer, cellWidth, cellHeight);
         }
     }
-
+    @Override
+    public void resize(double width, double height) {
+        super.resize(width, height);
+        draw();
+    }
     public void setHero(Image hero) {
-        Hero = hero;
+        this.hero = hero;
     }
 
-    public void setPlayerPos ( int playerRow, int playerCol)
-    {
+    public void setPlayerPos(int playerRow, int playerCol) {
         this.playerRow = playerRow;
         this.playerCol = playerCol;
     }
 
-    public void setMazeSolution (Solution sol)
-    {
+    public void setMazeSolution(Solution sol) {
         this.solution = sol;
     }
-
-
 }

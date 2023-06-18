@@ -7,46 +7,36 @@ import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
 
 public class MyViewController implements IView, Observer {
-    public Parent root;
-    public Scene scene;
-    public Stage stage;
     private Image Hero;
-    private MyViewModel mVModel;
+    private static MyViewModel mVModel;
     @FXML
     private TextField textField_mazeRows;
     @FXML
     private TextField textField_mazeColumns;
     @FXML
-    public MazeDisplay mazeDisplay;
+    public  MazeDisplay mazeDisplay;
     private int rows;
     private int cols;
 
     public void setViewModel(MyViewModel viewModel) {
-        this.mVModel = viewModel;
-        this.mVModel.addObserver(this);
+        mVModel = viewModel;
+        mVModel.addObserver(this);
     }
 
 
@@ -64,6 +54,8 @@ public class MyViewController implements IView, Observer {
                 // todo : do something
             }
             mazeDisplay.draw();
+            mazeDisplay.requestFocus();
+
         }
     }
 
@@ -110,81 +102,40 @@ public class MyViewController implements IView, Observer {
 
 
     public void keyPressed(KeyEvent keyEvent) {
+        System.out.println("key pressed" + keyEvent.getCode() );
         mVModel.movePlayer(keyEvent.getCode());
         keyEvent.consume();
     }
 
     public void AboutAction(ActionEvent event) throws IOException {
-        String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
-        FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("About.fxml")));
-        fxmlLoader.setController(this);
-        root = fxmlLoader.load();
-        scene = new Scene(root);
 
-        MenuItem menuItem = (MenuItem) event.getSource();
-
-        // Find the root Parent node
-        Parent parent = (Parent) menuItem.getParentPopup().getOwnerNode();
-        while (parent.getParent() != null) {
-            parent = parent.getParent();
-        }
-
-        Scene scene2 = parent.getScene();
-
-        // Get the Window (Stage) associated with the Scene
-        stage = (Stage) scene2.getWindow();
-
-        root.getStylesheets().add(googleFontsCSS);
-        stage.setScene(scene);
-        stage.show();
-
-        Object[] descLabel = root.lookupAll(".descText").toArray();
+        Object[] descLabel = TestView.about_root.lookupAll(".descText").toArray();
         double percentage = 0.0215;
-
         for (Object node : descLabel) {
             Label tempLabel = (Label) node;
             tempLabel.styleProperty().bind(
-                    Bindings.concat("-fx-font-size: ", stage.widthProperty().multiply(percentage), "px;")
+                    Bindings.concat("-fx-font-size: ",TestView.about_stage.widthProperty().multiply(percentage), "px;")
             );
         }
+        TestView.about_stage.show();
+        TestView.mainStage.hide();
     }
 
     public void HelpAction(ActionEvent event) throws IOException {
-        String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
-        FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Help.fxml")));
-        fxmlLoader.setController(this);
-        root = fxmlLoader.load();
-        scene = new Scene(root);
 
-        MenuItem menuItem = (MenuItem) event.getSource();
-
-        // Find the root Parent node
-        Parent parent = (Parent) menuItem.getParentPopup().getOwnerNode();
-        while (parent.getParent() != null) {
-            parent = parent.getParent();
-        }
-
-        Scene scene2 = parent.getScene();
-
-        // Get the Window (Stage) associated with the Scene
-        stage = (Stage) scene2.getWindow();
-
-        root.getStylesheets().add(googleFontsCSS);
-        stage.setScene(scene);
-        stage.show();
-
-        Object[] descLabel = root.lookupAll(".descText").toArray();
+        Object[] descLabel = TestView.help_root.lookupAll(".descText").toArray();
         double percentage = 0.0215;
-
         for (Object node : descLabel) {
             Label tempLabel = (Label) node;
             tempLabel.styleProperty().bind(
-                    Bindings.concat("-fx-font-size: ", stage.widthProperty().multiply(percentage), "px;")
+                    Bindings.concat("-fx-font-size: ", TestView.help_stage.widthProperty().multiply(percentage), "px;")
             );
         }
+        TestView.help_stage.show();
+        TestView.mainStage.hide();
     }
 
-    public void backToMenu(ActionEvent event)  {
+    public void backToMenu(ActionEvent event) {
         Button btm = (Button) event.getSource();
         btm.getStyleClass().add("Btn_pressed");
         btm.getStyleClass().remove("Btn_start");
@@ -194,41 +145,29 @@ public class MyViewController implements IView, Observer {
             btm.getStyleClass().add("Btn_start");
             btm.getStyleClass().remove("Btn_pressed");
 
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("MyView.fxml")));
-                fxmlLoader.setController(this);
-                root = fxmlLoader.load();
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-                System.out.println(mazeDisplay);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            // Get the current stage from the event source
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Show the main stage
+            TestView.mainStage.show();
+
+            // Hide the current stage
+            currentStage.hide();
         });
-
-
         pause.play();
     }
 
     public void AssingHero(MouseEvent mouseEvent) {
         Hero = ((ImageView)(mouseEvent.getSource())).getImage();
-        System.out.println(mazeDisplay);
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("mazeDisplay.fxml")));
-            fxmlLoader.setController(this);
-            root = fxmlLoader.load();
-            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        if(mazeDisplay!= null) {
+            mazeDisplay.setHero(Hero);
+            mVModel.generateMaze(rows, cols);
+            TestView.mazeDisplay_stage.show();
+            TestView.characterChoose_stage.hide();
         }
-        mazeDisplay.setHero(Hero);
-        mVModel.generateMaze(rows, cols);
-        //display maze......
+        else{
+            System.out.println("maze display is null :(");
+        }
     }
     public void startGame(ActionEvent event){
         try {
@@ -248,21 +187,8 @@ public class MyViewController implements IView, Observer {
         pause.setOnFinished(e -> {
             btm.getStyleClass().add("Btn_start");
             btm.getStyleClass().remove("Btn_pressed");
-
-
-            try {
-
-                FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("CharacterChoose.fxml")));
-                fxmlLoader.setController(this);
-                root = fxmlLoader.load();
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-
-                } catch(IOException ex){
-                    ex.printStackTrace();
-                }
+            TestView.characterChoose_stage.show();
+            TestView.mainStage.hide();
 
         });
         pause.play();
@@ -275,7 +201,7 @@ public class MyViewController implements IView, Observer {
         fileChooser.setTitle(title);
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Maze files (*.maze)", "*.maze"));
         fileChooser.setInitialDirectory(new File(System.getProperty("./resources")));
-        return fileChooser.showSaveDialog(TestView.myStage);
+        return fileChooser.showSaveDialog(TestView.mainStage);
     }
 
 }
