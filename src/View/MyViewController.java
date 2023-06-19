@@ -19,8 +19,8 @@ import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.io.File;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
@@ -47,7 +47,19 @@ public class MyViewController implements IView, Observer {
         mVModel = viewModel;
         mVModel.addObserver(this);
     }
+    public void Solve(ActionEvent actionEvent){
+        if(((CheckBox)(actionEvent.getSource())).isSelected()){
+            mazeDisplay.setSol(true);
+            mVModel.solveMaze();
+        }
+        else{
+            mazeDisplay.setSol(false);
 
+        }
+        System.out.println("solve");
+        mazeDisplay.requestFocus();
+
+    }
 
     @Override
     public void update(Observable o, Object arg) {
@@ -110,7 +122,26 @@ public class MyViewController implements IView, Observer {
     }
 
     public void PropertiesAction(ActionEvent actionEvent) {
-        // todo : die !
+        InputStream inputStream = getClass().getResourceAsStream("/config.properties");
+
+        if (inputStream != null) {
+            // Read the file content
+            StringBuilder content = new StringBuilder();
+            content.append("Game Properties: \n");
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    content.append(line).append("\n");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            TestView.props_stage.show();
+            TextArea textArea = (TextArea) (TestView.props_root.lookup("#PropsText"));
+            textArea.setText(content.toString());
+            textArea.setEditable(false);
+            TestView.mainStage.hide();
+        }
     }
 
     public void ExitAction(ActionEvent actionEvent) {
@@ -144,6 +175,7 @@ public class MyViewController implements IView, Observer {
             );
         }
         TestView.about_stage.show();
+
         TestView.mainStage.hide();
     }
 

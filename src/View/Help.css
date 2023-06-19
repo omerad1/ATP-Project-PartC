@@ -5,10 +5,7 @@ AnchorPane{
     -fx-background-repeat: no-repeat;
 }
 
-.desc{
-    -fx-font-size: 25px bold;
-    -fx-font-family: 'Diphylleia', serif;
-}
+
 .Help {
     -fx-font-size: 26px bold;
     -fx-font-family: 'Diphylleia', serif;

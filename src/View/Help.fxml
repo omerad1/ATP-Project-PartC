@@ -9,6 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1220.0" stylesheets="@Help.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+
       <Button contentDisplay="CENTER" layoutX="361.0" layoutY="295.0" mnemonicParsing="false" onAction="#backToMenu" opacity="0.93" prefHeight="104.0" prefWidth="239.0" styleClass="Btn_start" stylesheets="@Help.css" text="Back To Menu" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <effect>
             <DropShadow>

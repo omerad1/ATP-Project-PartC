@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="90276f7f-ae03-4cb3-b165-c7df2173899f" name="Changes" comment="sound">
+      <change afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/Properties.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/Properties.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/About.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/CharacterChoose.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CharacterChoose.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/CharacterPick.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CharacterPick.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Help.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Help.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Help.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MazeDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MazeDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TestView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/mazeDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/mazeDisplay.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/mazeDisplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/mazeDisplay.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/About.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/CharacterChoose.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/CharacterChoose.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/CharacterPick.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/CharacterPick.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/Help.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Help.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/Help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Help.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/mazeDisplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/mazeDisplay.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2RQLRBAdB5Dcq3L0ROTR9OtHguX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/omera/OneDrive/שולחן העבודה/לימודים/נושאים מתקדמים בתכנות/ATP-Project-PartC/ATP-Project-PartC/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.076537915",
+    "project.structure.side.proportion": "0.10845987",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\omera\OneDrive\שולחן העבודה\לימודים\נושאים מתקדמים בתכנות\ATP-Project-PartC\ATP-Project-PartC\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\omera\OneDrive\שולחן העבודה\לימודים\נושאים מתקדמים בתכנות\ATP-Project-PartC\ATP-Project-PartC\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="TestView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.TestView" />
+      <module name="ATP-Project-PartC" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\omera\OneDrive\שולחן העבודה\לימודים\נושאים מתקדמים בתכנות\openjfx-20.0.1_windows-x64_bin-sdk\javafx-sdk-20.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.media" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestView" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="90276f7f-ae03-4cb3-b165-c7df2173899f" name="Changes" comment="" />
+      <created>1687177353193</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687177353193</updated>
+      <workItem from="1687177355015" duration="1810000" />
+      <workItem from="1687179559498" duration="96000" />
+      <workItem from="1687179662688" duration="8988000" />
+    </task>
+    <task id="LOCAL-00001" summary="sound">
+      <created>1687180286479</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687180286479</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="sound" />
+    <option name="LAST_COMMIT_MESSAGE" value="sound" />
+  </component>
+</project>
