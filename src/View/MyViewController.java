@@ -13,14 +13,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
+import javafx.scene.media.MediaView;
 
 public class MyViewController implements IView, Observer {
     private Image Hero;
@@ -31,6 +35,8 @@ public class MyViewController implements IView, Observer {
     private TextField textField_mazeColumns;
     @FXML
     public  MazeDisplay mazeDisplay;
+    @FXML
+    private MediaView mediaView;
     private int rows;
     private int cols;
 
@@ -156,7 +162,20 @@ public class MyViewController implements IView, Observer {
         });
         pause.play();
     }
+    public void PlaySound(){
+        if(mediaView.getMediaPlayer() == null){
+            try {
+                String path = getClass().getResource("/backgroundSound.mp3").toURI().toString();
+                Media media = new Media(path);
+                MediaPlayer player = new MediaPlayer(media);
+                mediaView.setMediaPlayer(player);
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        mediaView.getMediaPlayer().play();
 
+    }
     public void AssingHero(MouseEvent mouseEvent) {
         Hero = ((ImageView)(mouseEvent.getSource())).getImage();
         if(mazeDisplay!= null) {

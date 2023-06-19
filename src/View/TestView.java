@@ -20,20 +20,24 @@ public class TestView extends Application {
     static FXMLLoader mazeDisplay_FxmlLoader;
     static FXMLLoader characterChoose_FxmlLoader;
     static FXMLLoader about_FxmlLoader;
+    static FXMLLoader sound_FxmlLoader;
     static Parent help_root;
     static Parent myView_root;
     static Parent mazeDisplay_root;
     static Parent characterChoose_root;
     static Parent about_root;
+    static Parent sound_root;
     static Scene myView_scene;
-    static  Scene mazeDisplay_scene;
+    static Scene mazeDisplay_scene;
     static Scene characterChoose_scene;
     static Scene about_scene;
     static Scene help_scene;
+    static Scene sound_scene;
     static Stage help_stage;
     static Stage mazeDisplay_stage;
     static Stage characterChoose_stage;
     static Stage about_stage;
+    static Stage sound_stage;
     public static void main(String[] args) {
         launch(args);
     }
@@ -51,15 +55,17 @@ public class TestView extends Application {
         characterChoose_FxmlLoader= new FXMLLoader(Objects.requireNonNull(getClass().getResource("CharacterChoose.fxml")));
         about_FxmlLoader= new FXMLLoader(Objects.requireNonNull(getClass().getResource("About.fxml")));
         help_FxmlLoader= new FXMLLoader(Objects.requireNonNull(getClass().getResource("Help.fxml")));
+        sound_FxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Sound.fxml")));
 
         /** - - - - - -- -- - - - - - - - - - - - - - Setting Controllers - - - - - - - - - - - - - - - - - -- - - - - - -*/
         MyViewController controller = new MyViewController();
+        SoundController soundController = new SoundController();
         myView_FxmlLoader.setController(controller);
         mazeDisplay_FxmlLoader.setController(controller);
         characterChoose_FxmlLoader.setController(controller);
         about_FxmlLoader.setController(controller);
         help_FxmlLoader.setController(controller);
-
+        sound_FxmlLoader.setController(soundController);
         /** - - - - - -- -- - - - - - - - - - - - - - Roots - - - - - - - - - - - - - - - - - -- - - - - - -*/
 
         myView_root = myView_FxmlLoader.load();
@@ -67,6 +73,7 @@ public class TestView extends Application {
         characterChoose_root = characterChoose_FxmlLoader.load();
         about_root = about_FxmlLoader.load();
         help_root = help_FxmlLoader.load();
+        sound_root = sound_FxmlLoader.load();
 
         /** - - - - - -- -- - - - - - - - - - - - - - applay Fonts - - - - - - - - - - - - - - - - - -- - - - - - -*/
 
@@ -90,13 +97,14 @@ public class TestView extends Application {
         characterChoose_scene = new Scene(characterChoose_root);
         about_scene = new Scene(about_root);
         help_scene = new Scene(help_root);
-
+        sound_scene = new Scene(sound_root);
         /** - - - - - -- -- - - - - - - - - - - - - - Creating Stages - - - - - - - - - - - - - - - - - -- - - - - - -*/
 
         mazeDisplay_stage = new Stage();
         characterChoose_stage = new Stage();
         about_stage = new Stage();
         help_stage = new Stage();
+        sound_stage = new Stage();
 
         /** - - - - - -- -- - - - - - - - - - - - - - Applying Scenes - - - - - - - - - - - - - - - - - -- - - - - - -*/
         mazeDisplay_stage.setScene(mazeDisplay_scene);
@@ -104,7 +112,7 @@ public class TestView extends Application {
         about_stage.setScene(about_scene);
         help_stage.setScene(help_scene);
         mainStage.setScene(myView_scene);
-
+        sound_stage.setScene(sound_scene);
 
         Object[] descLabel =  myView_root.lookupAll(".descText").toArray();
         double percentage = 0.0215;
@@ -115,6 +123,7 @@ public class TestView extends Application {
             );
         }
         mainStage.show();
+        sound_stage.show();
 
 
     }

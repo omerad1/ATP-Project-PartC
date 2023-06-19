@@ -5,10 +5,12 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -17,6 +19,7 @@
 <AnchorPane id="AnchorPane" fx:id="startBTN" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1220.0" stylesheets="@MainStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
     <children>
+        <MediaView id="mediaView" fx:id="mediaView" />
 
         <MenuBar blendMode="DIFFERENCE" prefHeight="25.0" prefWidth="673.0" styleClass="desc" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <menus>
@@ -47,6 +50,11 @@
                         <MenuItem mnemonicParsing="false" onAction="#AboutAction" text="About" />
                     </items>
                 </Menu>
+            <Menu mnemonicParsing="false" text="Sound">
+               <items>
+                  <RadioMenuItem mnemonicParsing="false" onAction="#PlaySound" text="Play Sound" />
+               </items>
+            </Menu>
             </menus>
         </MenuBar>
         <Label id="descLabel" alignment="CENTER" layoutX="23.0" layoutY="31.0" minWidth="-Infinity" opacity="0.74" prefHeight="76.0" prefWidth="554.0" styleClass="descText" text="Do you dare to enter the realm? Unlock its secrets by conquering the maze that lies before you!" textAlignment="CENTER" textFill="#ebe1e1" textOverrun="CLIP" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
