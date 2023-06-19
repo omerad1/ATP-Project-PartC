@@ -1,9 +1,0 @@
-.Base{
-    -fx-background-image: url("../imgs/mazeBackground.jpg");
-    -fx-background-position: center;
-    -fx-background-size: cover;
-    -fx-background-repeat: no-repeat;
-}
-#mazeDisplay{
-    -fx-background-size: 100% 100%;
-}
