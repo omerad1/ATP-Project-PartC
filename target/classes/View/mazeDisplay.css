@@ -7,3 +7,6 @@
 #mazeDisplay{
     -fx-background-size: 100% 100%;
 }
+.bttn{
+    -fx-text-fill: white;
+}
