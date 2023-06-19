@@ -4,26 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90276f7f-ae03-4cb3-b165-c7df2173899f" name="Changes" comment="sound">
-      <change afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Properties.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Properties.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/About.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/CharacterChoose.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CharacterChoose.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/CharacterPick.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CharacterPick.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Help.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Help.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Help.fxml" afterDir="false" />
+    <list default="true" id="90276f7f-ae03-4cb3-b165-c7df2173899f" name="Changes" comment="solution display">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/MyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MyModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/MazeDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MazeDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/TestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TestView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/mazeDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/mazeDisplay.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/mazeDisplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/mazeDisplay.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/About.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/CharacterChoose.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/CharacterChoose.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/CharacterPick.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/CharacterPick.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/Help.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Help.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/Help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Help.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/MyModel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MyModel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/MyModel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MyModel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/MyModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MyModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/MyViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MyViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/TestView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/TestView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/View/mazeDisplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/mazeDisplay.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +99,7 @@
       <updated>1687177353193</updated>
       <workItem from="1687177355015" duration="1810000" />
       <workItem from="1687179559498" duration="96000" />
-      <workItem from="1687179662688" duration="8988000" />
+      <workItem from="1687179662688" duration="20177000" />
     </task>
     <task id="LOCAL-00001" summary="sound">
       <created>1687180286479</created>
@@ -112,7 +108,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687180286479</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="solution display">
+      <created>1687189622177</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1687189622177</updated>
+    </task>
+    <task id="LOCAL-00003" summary="solution display">
+      <created>1687189639634</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687189639634</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +130,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="sound" />
-    <option name="LAST_COMMIT_MESSAGE" value="sound" />
+    <MESSAGE value="solution display" />
+    <option name="LAST_COMMIT_MESSAGE" value="solution display" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Model/MyModel.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -6,13 +6,19 @@ import ViewModel.MyViewModel;
 import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -21,6 +27,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.*;
+import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
@@ -39,8 +46,8 @@ public class MyViewController implements IView, Observer {
     private File file;
     private Media media;
     private MediaPlayer mediaPlayer;
-    private int rows;
-    private int cols;
+    private int rows =21;
+    private int cols = 21;
 
 
     public void setViewModel(MyViewModel viewModel) {
@@ -50,16 +57,46 @@ public class MyViewController implements IView, Observer {
     public void Solve(ActionEvent actionEvent){
         if(((CheckBox)(actionEvent.getSource())).isSelected()){
             mazeDisplay.setSol(true);
-            mVModel.solveMaze();
         }
         else{
             mazeDisplay.setSol(false);
-
         }
-        System.out.println("solve");
         mazeDisplay.requestFocus();
-
     }
+
+    public void displayFinish(){
+        Image cong = null;
+
+        try {
+            cong = new Image(new FileInputStream("C:\\Users\\omera\\OneDrive\\שולחן העבודה\\לימודים\\נושאים מתקדמים בתכנות\\ATP-Project-PartC\\ATP-Project-PartC\\src\\imgs\\congrats.gif"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Congratulations!");
+        DialogPane dialogPane = new DialogPane();
+        if(cong == null){
+            return;
+        }
+        dialogPane.setBackground(new Background(new BackgroundImage(cong, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, null, new BackgroundSize(1.0, 1.0, true, true, false, false))));
+        dialogPane.setMinHeight(300);
+
+        dialogPane.setMinWidth(450);
+
+        alert.setDialogPane(dialogPane);
+
+        ButtonType okButton = new ButtonType("Thank You");
+
+        alert.getButtonTypes().setAll(okButton);
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == okButton) {
+                alert.close();
+            }
+        });
+    }
+
+
 
     @Override
     public void update(Observable o, Object arg) {
@@ -69,16 +106,45 @@ public class MyViewController implements IView, Observer {
                 mazeDisplay.setMaze(mVModel.getMaze());
             if (message.contains("UpdatePlayerPosition"))
                 mazeDisplay.setPlayerPos(mVModel.getPlayerRow(), mVModel.getPlayerCol());
-            if (message.contains("UpdateSolution"))
+            if (message.contains("UpdateSolution") )
                 mazeDisplay.setMazeSolution(mVModel.getMazeSolution());
             if (message.contains("FoundGoal")) {
-                // todo : do something
+                mazeDisplay.draw();
+                displayFinish();
+                mVModel.endGame();
+                System.exit(0);
             }
             mazeDisplay.draw();
             mazeDisplay.requestFocus();
 
         }
     }
+
+    public void onDragged(MouseEvent mouseEvent) {
+        double mouseX = mouseEvent.getX();
+        double mouseY = mouseEvent.getY();
+        int playerX = mVModel.getPlayerRow();
+        int playerY = mVModel.getPlayerCol();
+        double propX = mazeDisplay.getPropX();
+        double propY = mazeDisplay.getPropY();
+        double dx = mouseX - (playerY * propY);
+        double dy = mouseY - (playerX * propX);
+        if (Math.abs(dx) > Math.abs(dy)) {
+            if (dx > 0) {
+                mVModel.movePlayer(KeyCode.RIGHT);
+            } else {
+                mVModel.movePlayer(KeyCode.LEFT);
+            }
+        } else {
+            if (dy > 0) {
+                mVModel.movePlayer(KeyCode.DOWN);
+            } else {
+                mVModel.movePlayer(KeyCode.UP);
+            }
+        }
+        mouseEvent.consume();
+    }
+
 
     public void PlaySound(ActionEvent actionEvent){
         if(mediaPlayer == null) {
@@ -99,9 +165,15 @@ public class MyViewController implements IView, Observer {
 
     }
     public void NewAction(ActionEvent actionEvent) {
-        mVModel.generateMaze(100, 100);
-        actionEvent.consume();
+
+        TestView.characterChoose_stage.show();
+        // Get the current stage from the event source
+        Stage currentStage = (Stage) ((MenuItem) actionEvent.getSource()).getParentPopup().getOwnerWindow();
+        // Hide the current stage
+        currentStage.hide();
+        TestView.characterChoose_stage.show();
     }
+
 
     public void SaveAction(ActionEvent actionEvent) {
         if(mVModel.getMaze() == null)

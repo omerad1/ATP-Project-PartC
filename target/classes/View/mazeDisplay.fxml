@@ -15,7 +15,7 @@
 <?import javafx.scene.control.CheckBox?>
 <AnchorPane styleClass="Base" stylesheets="@mazeDisplay.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <MazeDisplay width="1000.0" height="900.0" fx:id="mazeDisplay" AnchorPane.topAnchor="25" AnchorPane.rightAnchor="1" AnchorPane.leftAnchor="50" AnchorPane.bottomAnchor="1" onKeyPressed="#keyPressed"/>
+        <MazeDisplay width="1000.0" height="900.0" fx:id="mazeDisplay" AnchorPane.topAnchor="25" AnchorPane.rightAnchor="1" AnchorPane.leftAnchor="50" AnchorPane.bottomAnchor="1" onKeyPressed="#keyPressed" onMouseDragged="#onDragged" />
         <CheckBox styleClass="bttn" mnemonicParsing="false" onAction="#Solve" prefHeight="38.0" prefWidth="210.0" style="-fx-font-weight:bold" text="Show Solution" textAlignment="CENTER" AnchorPane.bottomAnchor="38" AnchorPane.rightAnchor="35">
             <font>
                 <Font name="Arial" size="18.0" />

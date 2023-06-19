@@ -123,6 +123,7 @@ public class MyModel extends Observable implements IModel{
                         toServer.writeObject(maze); //send maze to server
                         toServer.flush();
                         mazeSol = (Solution) fromServer.readObject();
+                        maze.print();
                         System.out.println(mazeSol.getSolutionPath());
                     } catch (Exception e) {
                         e.printStackTrace();

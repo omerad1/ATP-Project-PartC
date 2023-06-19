@@ -60,6 +60,7 @@ public class TestView extends Application {
 
         /** - - - - - -- -- - - - - - - - - - - - - - Setting Controllers - - - - - - - - - - - - - - - - - -- - - - - - -*/
         MyViewController controller = new MyViewController();
+
         myView_FxmlLoader.setController(controller);
         mazeDisplay_FxmlLoader.setController(controller);
         characterChoose_FxmlLoader.setController(controller);
