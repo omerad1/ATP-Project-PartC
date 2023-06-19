@@ -41,9 +41,6 @@ public class MazeDisplay extends Canvas {
         currLocation = new double[2];
         widthProperty().addListener(e -> draw());
         heightProperty().addListener(e -> draw());
-
-
-
         addEventFilter(ScrollEvent.ANY, new EventHandler<ScrollEvent>() {
             @Override
             public void handle(ScrollEvent event) {
