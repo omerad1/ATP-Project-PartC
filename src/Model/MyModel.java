@@ -169,6 +169,7 @@ public class MyModel extends Observable implements IModel{
             playerRow = tempRow;
             playerCol = tempCol;
         }
+
     }
 
 
