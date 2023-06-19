@@ -7,10 +7,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane  maxHeight="953.0" maxWidth="1060.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1220.0" stylesheets="@CharacterPick.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
+<AnchorPane maxHeight="953.0" maxWidth="1060.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1220.0" stylesheets="@CharacterPick.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
    <children>
-      <MenuBar blendMode="DIFFERENCE" prefHeight="25.0" prefWidth="673.0" styleClass="desc" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <MenuBar blendMode="DIFFERENCE" opacity="0.87" prefHeight="25.0" prefWidth="673.0" styleClass="desc" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
@@ -42,22 +42,22 @@
          </menus>
       </MenuBar>
 
-      <ImageView fitHeight="178.0" fitWidth="151.0" layoutX="474.0" layoutY="107.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="668.0" AnchorPane.leftAnchor="474.0" AnchorPane.rightAnchor="436.4146728515625" AnchorPane.topAnchor="107.0">
+      <ImageView fitHeight="151.0" fitWidth="120.0" layoutX="563.0" layoutY="84.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="603.2052459716797" AnchorPane.leftAnchor="563.0" AnchorPane.rightAnchor="537.0" AnchorPane.topAnchor="84.0">
          <image>
             <Image url="@../Resources/Images/abir-removebg-preview.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="189.0" fitWidth="151.0" layoutX="779.0" layoutY="399.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="376.4685516357422" AnchorPane.leftAnchor="779.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="399.0">
+      <ImageView fitHeight="151.0" fitWidth="120.0" layoutX="915.0" layoutY="316.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="372.9154052734375" AnchorPane.leftAnchor="915.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="316.0">
          <image>
             <Image url="@../Resources/Images/elf-removebg-preview.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="178.0" fitWidth="187.0" layoutX="139.0" layoutY="411.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="369.3846130371094" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="734.0" AnchorPane.topAnchor="411.0">
+      <ImageView fitHeight="142.0" fitWidth="140.0" layoutX="183.0" layoutY="316.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="384.76922607421875" AnchorPane.leftAnchor="183.0" AnchorPane.rightAnchor="897.0" AnchorPane.topAnchor="316.0">
          <image>
             <Image url="@../Resources/Images/lohemet-removebg-preview.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="165.0" fitWidth="167.0" layoutX="459.0" layoutY="718.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="459.0" AnchorPane.rightAnchor="436.98802185058594" AnchorPane.topAnchor="718.0">
+      <ImageView fitHeight="151.0" fitWidth="140.0" layoutX="553.0" layoutY="544.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="145.15663146972656" AnchorPane.leftAnchor="553.0" AnchorPane.rightAnchor="527.0" AnchorPane.topAnchor="544.0">
          <image>
             <Image url="@../Resources/Images/kosem-removebg-preview.png" />
          </image>

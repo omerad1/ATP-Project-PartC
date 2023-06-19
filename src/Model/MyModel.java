@@ -123,6 +123,7 @@ public class MyModel extends Observable implements IModel{
                         toServer.writeObject(maze); //send maze to server
                         toServer.flush();
                         mazeSol = (Solution) fromServer.readObject();
+                        maze.print();
                         System.out.println(mazeSol.getSolutionPath());
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -142,14 +143,14 @@ public class MyModel extends Observable implements IModel{
         int tempRow = this.playerRow;
         int tempCol = this.playerCol;
         switch (direction) {
-            case NUMPAD1 -> moveChar(1, -1);
-            case NUMPAD2 -> moveChar(1, 0);
-            case NUMPAD3 -> moveChar(1, 1);
-            case NUMPAD4 -> moveChar(0, -1);
-            case NUMPAD6 -> moveChar(0, 1);
-            case NUMPAD7 -> moveChar(-1, -1);
-            case NUMPAD8 -> moveChar(-1, 0);
-            case NUMPAD9 -> moveChar(-1, 1);
+            case NUMPAD1, END -> moveChar(1, -1);
+            case NUMPAD2, DOWN -> moveChar(1, 0);
+            case NUMPAD3, PAGE_DOWN -> moveChar(1, 1);
+            case NUMPAD4, LEFT -> moveChar(0, -1);
+            case NUMPAD6, RIGHT -> moveChar(0, 1);
+            case NUMPAD7, HOME -> moveChar(-1, -1);
+            case NUMPAD8, UP -> moveChar(-1, 0);
+            case NUMPAD9, PAGE_UP -> moveChar(-1, 1);
         }
         if (tempRow != this.playerRow || tempCol != this.playerCol){
             setChanged();
@@ -165,10 +166,11 @@ public class MyModel extends Observable implements IModel{
     {
         int tempRow = playerRow + rowMove;
         int tempCol = playerCol + colMove;
-        if(tempRow < maze.getRows() && tempRow > 0 && tempCol < maze.getColumns() && tempCol > 0 && maze.getMaze()[tempRow][tempCol] == 0) {
+        if(tempRow < maze.getRows() && tempRow >= 0 && tempCol < maze.getColumns() && tempCol >= 0 && maze.getMaze()[tempRow][tempCol] == 0) {
             playerRow = tempRow;
             playerCol = tempCol;
         }
+
     }
 
 

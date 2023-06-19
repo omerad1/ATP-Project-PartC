@@ -4,3 +4,11 @@ AnchorPane{
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
 }
+.desc{
+    -fx-font-size: 20px bold;
+    -fx-font-family: 'Diphylleia', serif;
+}
+.descText{
+    -fx-font-size: 20px bold;
+    -fx-font-family: 'Diphylleia', serif;
+}

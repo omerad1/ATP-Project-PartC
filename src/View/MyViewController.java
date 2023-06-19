@@ -6,48 +6,96 @@ import ViewModel.MyViewModel;
 import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
 
 public class MyViewController implements IView, Observer {
-    public Parent root;
-    public Scene scene;
-    public Stage stage;
     private Image Hero;
-    private MyViewModel mVModel;
+    private static MyViewModel mVModel;
     @FXML
     private TextField textField_mazeRows;
     @FXML
     private TextField textField_mazeColumns;
     @FXML
-    public MazeDisplay mazeDisplay;
-    private int rows = 10;
-    private int cols = 10;
+    public  MazeDisplay mazeDisplay;
+    @FXML
+    private MediaView mediaView;
+    private File file;
+    private Media media;
+    private MediaPlayer mediaPlayer;
+    private int rows =21;
+    private int cols = 21;
+
 
     public void setViewModel(MyViewModel viewModel) {
-        this.mVModel = viewModel;
-        this.mVModel.addObserver(this);
+        mVModel = viewModel;
+        mVModel.addObserver(this);
     }
+    public void Solve(ActionEvent actionEvent){
+        if(((CheckBox)(actionEvent.getSource())).isSelected()){
+            mazeDisplay.setSol(true);
+        }
+        else{
+            mazeDisplay.setSol(false);
+        }
+        mazeDisplay.requestFocus();
+    }
+
+    public void displayFinish(){
+        Image cong = null;
+
+        try {
+            cong = new Image(new FileInputStream("C:\\Users\\omera\\OneDrive\\שולחן העבודה\\לימודים\\נושאים מתקדמים בתכנות\\ATP-Project-PartC\\ATP-Project-PartC\\src\\imgs\\congrats.gif"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Congratulations!");
+        DialogPane dialogPane = new DialogPane();
+        if(cong == null){
+            return;
+        }
+        dialogPane.setBackground(new Background(new BackgroundImage(cong, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, null, new BackgroundSize(1.0, 1.0, true, true, false, false))));
+        dialogPane.setMinHeight(300);
+
+        dialogPane.setMinWidth(450);
+
+        alert.setDialogPane(dialogPane);
+
+        ButtonType okButton = new ButtonType("Thank You");
+
+        alert.getButtonTypes().setAll(okButton);
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == okButton) {
+                alert.close();
+            }
+        });
+    }
+
 
 
     @Override
@@ -58,20 +106,74 @@ public class MyViewController implements IView, Observer {
                 mazeDisplay.setMaze(mVModel.getMaze());
             if (message.contains("UpdatePlayerPosition"))
                 mazeDisplay.setPlayerPos(mVModel.getPlayerRow(), mVModel.getPlayerCol());
-            if (message.contains("UpdateSolution"))
+            if (message.contains("UpdateSolution") )
                 mazeDisplay.setMazeSolution(mVModel.getMazeSolution());
             if (message.contains("FoundGoal")) {
-                // todo : do something
+                mazeDisplay.draw();
+                displayFinish();
+                mVModel.endGame();
+                System.exit(0);
             }
             mazeDisplay.draw();
+            mazeDisplay.requestFocus();
+
         }
     }
 
-
-    public void NewAction(ActionEvent actionEvent) {
-        mVModel.generateMaze(100, 100);
-        actionEvent.consume();
+    public void onDragged(MouseEvent mouseEvent) {
+        double mouseX = mouseEvent.getX();
+        double mouseY = mouseEvent.getY();
+        int playerX = mVModel.getPlayerRow();
+        int playerY = mVModel.getPlayerCol();
+        double propX = mazeDisplay.getPropX();
+        double propY = mazeDisplay.getPropY();
+        double dx = mouseX - (playerY * propY);
+        double dy = mouseY - (playerX * propX);
+        if (Math.abs(dx) > Math.abs(dy)) {
+            if (dx > 0) {
+                mVModel.movePlayer(KeyCode.RIGHT);
+            } else {
+                mVModel.movePlayer(KeyCode.LEFT);
+            }
+        } else {
+            if (dy > 0) {
+                mVModel.movePlayer(KeyCode.DOWN);
+            } else {
+                mVModel.movePlayer(KeyCode.UP);
+            }
+        }
+        mouseEvent.consume();
     }
+
+
+    public void PlaySound(ActionEvent actionEvent){
+        if(mediaPlayer == null) {
+            file = new File("C:\\Users\\omera\\OneDrive\\שולחן העבודה\\לימודים\\נושאים מתקדמים בתכנות\\ATP-Project-PartC\\ATP-Project-PartC\\resources\\backgroundSound.mp3");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+        }
+        if(((CheckMenuItem)actionEvent.getSource()).isSelected()){
+            mediaPlayer.play();
+            mediaPlayer.setVolume(0.3);
+
+        }
+        else{
+            mediaPlayer.pause();
+        }
+
+
+
+    }
+    public void NewAction(ActionEvent actionEvent) {
+
+        TestView.characterChoose_stage.show();
+        // Get the current stage from the event source
+        Stage currentStage = (Stage) ((MenuItem) actionEvent.getSource()).getParentPopup().getOwnerWindow();
+        // Hide the current stage
+        currentStage.hide();
+        TestView.characterChoose_stage.show();
+    }
+
 
     public void SaveAction(ActionEvent actionEvent) {
         if(mVModel.getMaze() == null)
@@ -92,7 +194,26 @@ public class MyViewController implements IView, Observer {
     }
 
     public void PropertiesAction(ActionEvent actionEvent) {
-        // todo : die !
+        InputStream inputStream = getClass().getResourceAsStream("/config.properties");
+
+        if (inputStream != null) {
+            // Read the file content
+            StringBuilder content = new StringBuilder();
+            content.append("Game Properties: \n");
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    content.append(line).append("\n");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            TestView.props_stage.show();
+            TextArea textArea = (TextArea) (TestView.props_root.lookup("#PropsText"));
+            textArea.setText(content.toString());
+            textArea.setEditable(false);
+            TestView.mainStage.hide();
+        }
     }
 
     public void ExitAction(ActionEvent actionEvent) {
@@ -110,77 +231,41 @@ public class MyViewController implements IView, Observer {
 
 
     public void keyPressed(KeyEvent keyEvent) {
+        System.out.println("key pressed" + keyEvent.getCode() );
         mVModel.movePlayer(keyEvent.getCode());
         keyEvent.consume();
     }
 
     public void AboutAction(ActionEvent event) throws IOException {
-        String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("About.fxml")));
-        Scene scene2 = new Scene(root);
 
-        MenuItem menuItem = (MenuItem) event.getSource();
-
-        // Find the root Parent node
-        Parent parent = (Parent) menuItem.getParentPopup().getOwnerNode();
-        while (parent.getParent() != null) {
-            parent = parent.getParent();
-        }
-
-        Scene scene = parent.getScene();
-
-        // Get the Window (Stage) associated with the Scene
-        Stage stage = (Stage) scene.getWindow();
-
-        root.getStylesheets().add(googleFontsCSS);
-        stage.setScene(scene2);
-        stage.show();
-
-        Object[] descLabel = root.lookupAll(".descText").toArray();
+        Object[] descLabel = TestView.about_root.lookupAll(".descText").toArray();
         double percentage = 0.0215;
-
         for (Object node : descLabel) {
             Label tempLabel = (Label) node;
             tempLabel.styleProperty().bind(
-                    Bindings.concat("-fx-font-size: ", stage.widthProperty().multiply(percentage), "px;")
+                    Bindings.concat("-fx-font-size: ",TestView.about_stage.widthProperty().multiply(percentage), "px;")
             );
         }
+        TestView.about_stage.show();
+
+        TestView.mainStage.hide();
     }
 
     public void HelpAction(ActionEvent event) throws IOException {
-        String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Help.fxml")));
-        Scene scene2 = new Scene(root);
 
-        MenuItem menuItem = (MenuItem) event.getSource();
-
-        // Find the root Parent node
-        Parent parent = (Parent) menuItem.getParentPopup().getOwnerNode();
-        while (parent.getParent() != null) {
-            parent = parent.getParent();
-        }
-
-        Scene scene = parent.getScene();
-
-        // Get the Window (Stage) associated with the Scene
-        Stage stage = (Stage) scene.getWindow();
-
-        root.getStylesheets().add(googleFontsCSS);
-        stage.setScene(scene2);
-        stage.show();
-
-        Object[] descLabel = root.lookupAll(".descText").toArray();
+        Object[] descLabel = TestView.help_root.lookupAll(".descText").toArray();
         double percentage = 0.0215;
-
         for (Object node : descLabel) {
             Label tempLabel = (Label) node;
             tempLabel.styleProperty().bind(
-                    Bindings.concat("-fx-font-size: ", stage.widthProperty().multiply(percentage), "px;")
+                    Bindings.concat("-fx-font-size: ", TestView.help_stage.widthProperty().multiply(percentage), "px;")
             );
         }
+        TestView.help_stage.show();
+        TestView.mainStage.hide();
     }
 
-    public void backToMenu(ActionEvent event)  {
+    public void backToMenu(ActionEvent event) {
         Button btm = (Button) event.getSource();
         btm.getStyleClass().add("Btn_pressed");
         btm.getStyleClass().remove("Btn_start");
@@ -190,36 +275,29 @@ public class MyViewController implements IView, Observer {
             btm.getStyleClass().add("Btn_start");
             btm.getStyleClass().remove("Btn_pressed");
 
-            try {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyView.fxml")));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            // Get the current stage from the event source
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Show the main stage
+            TestView.mainStage.show();
+
+            // Hide the current stage
+            currentStage.hide();
         });
-
-
         pause.play();
     }
 
     public void AssingHero(MouseEvent mouseEvent) {
         Hero = ((ImageView)(mouseEvent.getSource())).getImage();
-        System.out.println(rows);
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mazeDisplay.fxml")));
-            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        if(mazeDisplay!= null) {
+            mazeDisplay.setHero(Hero);
+            mVModel.generateMaze(rows, cols);
+            TestView.mazeDisplay_stage.show();
+            TestView.characterChoose_stage.hide();
         }
-        mazeDisplay.setHero(Hero);
-        mVModel.generateMaze(rows, cols);
-        //display maze......
+        else{
+            System.out.println("maze display is null :(");
+        }
     }
     public void startGame(ActionEvent event){
         try {
@@ -239,18 +317,8 @@ public class MyViewController implements IView, Observer {
         pause.setOnFinished(e -> {
             btm.getStyleClass().add("Btn_start");
             btm.getStyleClass().remove("Btn_pressed");
-
-
-            try {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CharacterChoose.fxml")));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-
-                } catch(IOException ex){
-                    ex.printStackTrace();
-                }
+            TestView.characterChoose_stage.show();
+            TestView.mainStage.hide();
 
         });
         pause.play();
@@ -263,7 +331,7 @@ public class MyViewController implements IView, Observer {
         fileChooser.setTitle(title);
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Maze files (*.maze)", "*.maze"));
         fileChooser.setInitialDirectory(new File(System.getProperty("./resources")));
-        return fileChooser.showSaveDialog(TestView.myStage);
+        return fileChooser.showSaveDialog(TestView.mainStage);
     }
 
 }

@@ -1,0 +1,11 @@
+#Props{
+    -fx-background-image: url("../imgs/propertiesBack.jpg");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+.desc{
+    -fx-font-size: 30px bold;
+    -fx-font-family: 'Diphylleia', serif;
+    -fx-text-fill: #230101;
+}

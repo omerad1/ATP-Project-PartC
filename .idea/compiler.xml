@@ -9,5 +9,8 @@
         <module name="ATP-Project-PartC" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ATP-Project-PartC" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

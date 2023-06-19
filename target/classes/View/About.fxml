@@ -7,8 +7,9 @@
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1220.0" stylesheets="@About.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1220.0" stylesheets="@About.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+
       <Button layoutX="361.0" layoutY="295.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="104.0" prefWidth="239.0" styleClass="Btn_start" text="Back To Menu" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Label blendMode="HARD_LIGHT" layoutX="1.0" layoutY="14.0" prefHeight="263.0" prefWidth="1214.0" styleClass="descText" text="About Our Maze Game: Welcome to Our Maze Game, crafted by Omer Adam and Tom Sheinman, information systems and software engineering students.Our Mazes are generated and solved in this game using these algorithms :The hard maze is created using a random DFS algorithm, while the novice maze is generated using a pure random algorithm.The solutions for these mazes are generated using BFS, DFS, and Best First Search, which you can choose to guide you to victory. " textAlignment="CENTER" textOverrun="CLIP" wrapText="true" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="2.0">
          <textFill>
