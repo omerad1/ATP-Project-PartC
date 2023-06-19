@@ -13,6 +13,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -31,8 +34,14 @@ public class MyViewController implements IView, Observer {
     private TextField textField_mazeColumns;
     @FXML
     public  MazeDisplay mazeDisplay;
+    @FXML
+    private MediaView mediaView;
+    private File file;
+    private Media media;
+    private MediaPlayer mediaPlayer;
     private int rows;
     private int cols;
+
 
     public void setViewModel(MyViewModel viewModel) {
         mVModel = viewModel;
@@ -59,7 +68,24 @@ public class MyViewController implements IView, Observer {
         }
     }
 
+    public void PlaySound(ActionEvent actionEvent){
+        if(mediaPlayer == null) {
+            file = new File("C:\\Users\\omera\\OneDrive\\שולחן העבודה\\לימודים\\נושאים מתקדמים בתכנות\\ATP-Project-PartC\\ATP-Project-PartC\\resources\\backgroundSound.mp3");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+        }
+        if(((CheckMenuItem)actionEvent.getSource()).isSelected()){
+            mediaPlayer.play();
+            mediaPlayer.setVolume(0.3);
 
+        }
+        else{
+            mediaPlayer.pause();
+        }
+
+
+
+    }
     public void NewAction(ActionEvent actionEvent) {
         mVModel.generateMaze(100, 100);
         actionEvent.consume();

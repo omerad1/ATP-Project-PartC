@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -9,6 +10,7 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -47,6 +49,11 @@
                         <MenuItem mnemonicParsing="false" onAction="#AboutAction" text="About" />
                     </items>
                 </Menu>
+            <Menu mnemonicParsing="false" text="Media">
+               <items>
+                  <CheckMenuItem fx:id="playButton" mnemonicParsing="false" onAction="#PlaySound" text="Sound" />
+               </items>
+            </Menu>
             </menus>
         </MenuBar>
         <Label id="descLabel" alignment="CENTER" layoutX="23.0" layoutY="31.0" minWidth="-Infinity" opacity="0.74" prefHeight="76.0" prefWidth="554.0" styleClass="descText" text="Do you dare to enter the realm? Unlock its secrets by conquering the maze that lies before you!" textAlignment="CENTER" textFill="#ebe1e1" textOverrun="CLIP" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
@@ -127,5 +134,6 @@
                 </InnerShadow>
             </effect>
         </Button>
+      <MediaView layoutX="922.0" layoutY="117.0" />
     </children>
 </AnchorPane>
