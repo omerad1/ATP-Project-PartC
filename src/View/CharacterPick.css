@@ -1,5 +1,5 @@
 AnchorPane{
-    -fx-background-image: url("../imgs/igor-throne-fraim.jpg");
+    -fx-background-image: url("/imgs/igor-throne-fraim.jpg");
     -fx-background-position: center;
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;

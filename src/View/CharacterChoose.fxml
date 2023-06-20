@@ -44,22 +44,22 @@
 
       <ImageView fitHeight="151.0" fitWidth="120.0" layoutX="563.0" layoutY="84.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="603.2052459716797" AnchorPane.leftAnchor="563.0" AnchorPane.rightAnchor="537.0" AnchorPane.topAnchor="84.0">
          <image>
-            <Image url="@../Resources/Images/abir-removebg-preview.png" />
+            <Image url="@/imgs/abir-removebg-preview.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="151.0" fitWidth="120.0" layoutX="915.0" layoutY="316.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="372.9154052734375" AnchorPane.leftAnchor="915.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="316.0">
          <image>
-            <Image url="@../Resources/Images/elf-removebg-preview.png" />
+            <Image url="@/imgs/elf-removebg-preview.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="142.0" fitWidth="140.0" layoutX="183.0" layoutY="316.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="384.76922607421875" AnchorPane.leftAnchor="183.0" AnchorPane.rightAnchor="897.0" AnchorPane.topAnchor="316.0">
          <image>
-            <Image url="@../Resources/Images/lohemet-removebg-preview.png" />
+            <Image url="@/imgs/lohemet-removebg-preview.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="151.0" fitWidth="140.0" layoutX="553.0" layoutY="544.0" onMouseClicked="#AssingHero" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="145.15663146972656" AnchorPane.leftAnchor="553.0" AnchorPane.rightAnchor="527.0" AnchorPane.topAnchor="544.0">
          <image>
-            <Image url="@../Resources/Images/kosem-removebg-preview.png" />
+            <Image url="@/imgs/kosem-removebg-preview.png" />
          </image>
       </ImageView>
    </children>

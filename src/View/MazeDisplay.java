@@ -5,6 +5,7 @@ import algorithms.search.AState;
 import algorithms.search.MazeState;
 import algorithms.search.Solution;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.canvas.Canvas;
@@ -12,6 +13,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.transform.NonInvertibleTransformException;
@@ -19,6 +21,7 @@ import javafx.scene.transform.NonInvertibleTransformException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MazeDisplay extends Canvas {
 
@@ -36,13 +39,23 @@ public class MazeDisplay extends Canvas {
     private double cellWidth;
     private double cellHeight;
 
+    private AnchorPane anchorPane;
 
     public MazeDisplay() {
         currLocation = new double[2];
-        widthProperty().addListener(e -> draw());
-        heightProperty().addListener(e -> draw());
+        initialize();
+    }
 
+    private void initialize() {
+        anchorPane = (AnchorPane) getParent();
 
+        if (anchorPane != null) {
+            anchorPane.widthProperty().addListener((obs, oldWidth, newWidth) -> draw());
+            anchorPane.heightProperty().addListener((obs, oldHeight, newHeight) -> draw());
+        }
+
+        widthProperty().addListener((obs, oldWidth, newWidth) -> draw());
+        heightProperty().addListener((obs, oldHeight, newHeight) -> draw());
 
         addEventFilter(ScrollEvent.ANY, new EventHandler<ScrollEvent>() {
             @Override
@@ -68,7 +81,7 @@ public class MazeDisplay extends Canvas {
         });
     }
 
-        public void setMaze(Maze maze) {
+    public void setMaze(Maze maze) {
         this.maze = maze;
     }
 
@@ -77,10 +90,19 @@ public class MazeDisplay extends Canvas {
     }
 
     public void draw() {
+        if (hero == null) {
+            // default hero
+            Image defHero = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imgs/kosem-removebg-preview.png")));
+            hero = defHero;
+        }
+
         if (maze != null) {
+
             int[][] board = maze.getMaze();
-            double canvasHeight = getHeight();
-            double canvasWidth = getWidth();
+            double canvasHeight = anchorPane.getHeight()*0.91;
+            double canvasWidth = anchorPane.getWidth()*0.85;
+            setHeight(canvasHeight);
+            setWidth(canvasWidth);
             int nRows = maze.getRows();
             int nCols = maze.getColumns();
             cellHeight = canvasHeight / nRows;
@@ -88,6 +110,8 @@ public class MazeDisplay extends Canvas {
             double w, h;
 
             GraphicsContext graphicsContext = getGraphicsContext2D();
+            graphicsContext.clearRect(0, 0, anchorPane.getHeight(), anchorPane.getWidth());
+
             graphicsContext.clearRect(0, 0, canvasWidth, canvasHeight);
 
             // Apply zooming transformation
@@ -98,17 +122,9 @@ public class MazeDisplay extends Canvas {
             graphicsContext.setLineWidth(3.0 / zoomFactor);
             graphicsContext.strokeRect(0, 0, canvasWidth / zoomFactor, canvasHeight / zoomFactor);
 
-            Image wallImage = null;
-            Image gate = null;
-            Image monster = null;
-            try {
-                monster = new Image(new FileInputStream("C:\\Users\\omera\\OneDrive\\שולחן העבודה\\לימודים\\נושאים מתקדמים בתכנות\\ATP-Project-PartC\\ATP-Project-PartC\\src\\imgs\\monster.png"));
-
-                gate = new Image(new FileInputStream("C:\\Users\\omera\\OneDrive\\שולחן העבודה\\לימודים\\נושאים מתקדמים בתכנות\\ATP-Project-PartC\\ATP-Project-PartC\\src\\imgs\\gate.jpg"));
-                wallImage = new Image(new FileInputStream("C:\\Users\\omera\\OneDrive\\שולחן העבודה\\לימודים\\נושאים מתקדמים בתכנות\\ATP-Project-PartC\\ATP-Project-PartC\\src\\imgs\\wall.jpg"));
-            } catch (FileNotFoundException e) {
-                System.out.println();
-            }
+            Image monster = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imgs/monster.png")));
+            Image gate = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imgs/gate.jpg")));
+            Image wallImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imgs/wall.jpg")));
 
             for (int i = 0; i < nRows; i++) {
                 for (int j = 0; j < nCols; j++) {
@@ -118,13 +134,9 @@ public class MazeDisplay extends Canvas {
                         graphicsContext.drawImage(gate, w, h, cellWidth, cellHeight);
                         continue;
                     }
-                    if (board[i][j] == 1) {
-                        if (wallImage == null) {
-                            graphicsContext.fillRect(w, h, cellWidth, cellHeight);
-                        } else {
-                            graphicsContext.drawImage(wallImage, w, h, cellWidth, cellHeight);
-                        }
-                    } else if (showSol && !(i == playerRow && j == playerCol)) {
+                    if (board[i][j] == 1)
+                        graphicsContext.drawImage(wallImage, w, h, cellWidth, cellHeight);
+                     else if (showSol && !(i == playerRow && j == playerCol)) {
                         AState currState = new MazeState(i, j, 0);
                         if (solPath != null && solPath.contains(currState))
                             graphicsContext.drawImage(monster, w, h, cellWidth, cellHeight);
@@ -178,7 +190,6 @@ public class MazeDisplay extends Canvas {
     private void zoomOut(double mouseX, double mouseY) throws NonInvertibleTransformException {
         if (zoomFactor > 1.0) {
             zoomFactor -= zoomStep;
-            // Adjust the transformation origin based on the mouse position
             GraphicsContext graphicsContext = getGraphicsContext2D();
             Point2D canvasPoint = graphicsContext.getTransform().inverseTransform(mouseX, mouseY);
             graphicsContext.translate(canvasPoint.getX(), canvasPoint.getY());
@@ -190,19 +201,25 @@ public class MazeDisplay extends Canvas {
         }
     }
 
+    public void setAnchorPane(AnchorPane anchor) {
+        this.anchorPane = anchor;
+    }
+
     @Override
     public void resize(double width, double height) {
         super.resize(width, height);
         draw();
     }
-    public double[] getHeroLocation(){
+
+    public double[] getHeroLocation() {
         return currLocation;
     }
-    public double getPropX(){
-        return cellWidth * zoomFactor;
 
+    public double getPropX() {
+        return cellWidth * zoomFactor;
     }
-    public double getPropY(){
+
+    public double getPropY() {
         return cellHeight * zoomFactor;
     }
 }
