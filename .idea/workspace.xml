@@ -6,15 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="90276f7f-ae03-4cb3-b165-c7df2173899f" name="Changes" comment="male male dvarim">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MazeDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MazeDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/mazeDisplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/mazeDisplay.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MainApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MazeDisplay$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MazeDisplay$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MyViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MyViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/mazeDisplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/mazeDisplay.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +13,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="OmerMaze" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -85,6 +81,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
+        <item itemvalue="Application.MainApplication" />
+        <item itemvalue="Application.MainApplication" />
+        <item itemvalue="Application.MainApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -100,7 +99,7 @@
       <workItem from="1687179559498" duration="96000" />
       <workItem from="1687179662688" duration="20177000" />
       <workItem from="1687265796735" duration="7122000" />
-      <workItem from="1687273747683" duration="6096000" />
+      <workItem from="1687273747683" duration="6558000" />
     </task>
     <task id="LOCAL-00001" summary="sound">
       <created>1687180286479</created>
@@ -137,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687274104387</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="male male dvarim">
+      <created>1687280148310</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1687280148310</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
