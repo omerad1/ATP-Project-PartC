@@ -5,8 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90276f7f-ae03-4cb3-b165-c7df2173899f" name="Changes" comment="male male dvarim">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/MyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MyModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/About.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/About.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/About.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/CharacterChoose.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CharacterChoose.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/CharacterPick.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CharacterPick.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Help.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Help.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MainStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MainStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/MazeDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MazeDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Properties.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Properties.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/mazeDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/mazeDisplay.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/1000_F_452939653_uSLAQdF6fmHpsPUFlPJaG2Jy5ds4Tsdu.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/OpenBackGround.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/congrats.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/gate.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/helpBackground.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/igor-throne-fraim.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/knightBackground.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/mazeBackground.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/monster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/old-book-open-dark-wood-background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/path.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/pexels-dana-tentis-370799.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/propertiesBack.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/the-maze-runner-maze-runner-gifs.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imgs/wall.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/MyModel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MyModel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/MyModel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MyModel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/MyModel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MyModel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/MyModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MyModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/About.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/About.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/About.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/CharacterChoose.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/CharacterChoose.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/CharacterPick.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/CharacterPick.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/Help.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Help.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/MainStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MainStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/MazeDisplay$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MazeDisplay$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/MyViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MyViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/Properties.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Properties.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/TestView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/mazeDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/mazeDisplay.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/imgs/helpBackground.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/imgs/old-book-open-dark-wood-background.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,22 +75,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/omera/OneDrive/שולחן העבודה/לימודים/נושאים מתקדמים בתכנות/ATP-Project-PartC/ATP-Project-PartC/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.076537915&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.10845987&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "C:/Users/omera/OneDrive/שולחן העבודה/לימודים/נושאים מתקדמים בתכנות/ATP-Project-PartC/ATP-Project-PartC/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.076537915",
+    "project.structure.side.proportion": "0.10845987",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\omera\OneDrive\שולחן העבודה\לימודים\נושאים מתקדמים בתכנות\ATP-Project-PartC\ATP-Project-PartC\resources" />
@@ -54,10 +99,13 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\omera\OneDrive\שולחן העבודה\לימודים\נושאים מתקדמים בתכנות\ATP-Project-PartC\ATP-Project-PartC\resources" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager">
-    <configuration name="TestView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.TestView" />
+    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.MainApplication" />
       <module name="ATP-Project-PartC" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\omera\OneDrive\שולחן העבודה\לימודים\נושאים מתקדמים בתכנות\openjfx-20.0.1_windows-x64_bin-sdk\javafx-sdk-20.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.media" />
       <extension name="coverage">
@@ -72,7 +120,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestView" />
+        <item itemvalue="Application.MainApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -87,6 +135,7 @@
       <workItem from="1687177355015" duration="1810000" />
       <workItem from="1687179559498" duration="96000" />
       <workItem from="1687179662688" duration="20177000" />
+      <workItem from="1687265796735" duration="7122000" />
     </task>
     <task id="LOCAL-00001" summary="sound">
       <created>1687180286479</created>
@@ -109,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687189639634</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="male male dvarim">
+      <created>1687203845388</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1687203845388</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,17 +174,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="sound" />
     <MESSAGE value="solution display" />
-    <option name="LAST_COMMIT_MESSAGE" value="solution display" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Model/MyModel.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="male male dvarim" />
+    <option name="LAST_COMMIT_MESSAGE" value="male male dvarim" />
   </component>
 </project>

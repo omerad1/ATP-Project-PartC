@@ -1,6 +1,5 @@
 package Model;
 
-import View.TestView;
 import algorithms.mazeGenerators.Maze;
 import algorithms.search.Solution;
 
@@ -11,7 +10,6 @@ import Client.*;
 import IO.MyDecompressorInputStream;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
-import javafx.stage.FileChooser;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -190,7 +188,10 @@ public class MyModel extends Observable implements IModel{
 
     @Override
     public void loadMaze(File file) {
+        String msg = "";
         if (file == null) return;
+        if (maze == null)
+            msg = "loadFromStart";
         try (ObjectInputStream gameLoader = new ObjectInputStream(new FileInputStream(file))) {
             MazeData mazeData = (MazeData) gameLoader.readObject();
             maze = mazeData.getMaze();
@@ -198,7 +199,7 @@ public class MyModel extends Observable implements IModel{
             playerCol = mazeData.getPlayerCol();
             mazeSol = mazeData.getSolution();
             setChanged();
-            notifyObservers("mazeDisplay, solutionDisplay, playerDisplay");
+            notifyObservers("UpdateMaze, UpdatePlayerPosition, UpdateSolution" + ", "+ msg);
         } catch (Exception e) {
             showAlert("Could not load game :(\nPlease try again!", false);
         }

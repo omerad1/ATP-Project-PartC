@@ -19,6 +19,7 @@ import javafx.scene.transform.NonInvertibleTransformException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MazeDisplay extends Canvas {
 
@@ -74,6 +75,11 @@ public class MazeDisplay extends Canvas {
     }
 
     public void draw() {
+        if(hero == null){
+            // default hero
+            Image defHero = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imgs/kosem-removebg-preview.png")));
+            hero = defHero;
+        }
         if (maze != null) {
             int[][] board = maze.getMaze();
             double canvasHeight = getHeight();
@@ -95,17 +101,10 @@ public class MazeDisplay extends Canvas {
             graphicsContext.setLineWidth(3.0 / zoomFactor);
             graphicsContext.strokeRect(0, 0, canvasWidth / zoomFactor, canvasHeight / zoomFactor);
 
-            Image wallImage = null;
-            Image gate = null;
-            Image monster = null;
-            try {
-                monster = new Image(new FileInputStream("C:\\Users\\omera\\OneDrive\\שולחן העבודה\\לימודים\\נושאים מתקדמים בתכנות\\ATP-Project-PartC\\ATP-Project-PartC\\src\\imgs\\monster.png"));
 
-                gate = new Image(new FileInputStream("C:\\Users\\omera\\OneDrive\\שולחן העבודה\\לימודים\\נושאים מתקדמים בתכנות\\ATP-Project-PartC\\ATP-Project-PartC\\src\\imgs\\gate.jpg"));
-                wallImage = new Image(new FileInputStream("C:\\Users\\omera\\OneDrive\\שולחן העבודה\\לימודים\\נושאים מתקדמים בתכנות\\ATP-Project-PartC\\ATP-Project-PartC\\src\\imgs\\wall.jpg"));
-            } catch (FileNotFoundException e) {
-                System.out.println();
-            }
+            Image monster = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imgs/monster.png")));
+            Image gate = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imgs/gate.jpg")));
+            Image wallImage =new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imgs/wall.jpg")));
 
             for (int i = 0; i < nRows; i++) {
                 for (int j = 0; j < nCols; j++) {
