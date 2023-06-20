@@ -6,16 +6,20 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.CheckBox?>
-<AnchorPane styleClass="Base" stylesheets="@mazeDisplay.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane fx:id="anchorPane" styleClass="Base" stylesheets="@mazeDisplay.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <MazeDisplay width="1000.0" height="900.0" fx:id="mazeDisplay" AnchorPane.topAnchor="25" AnchorPane.rightAnchor="1" AnchorPane.leftAnchor="50" AnchorPane.bottomAnchor="1" onKeyPressed="#keyPressed" onMouseDragged="#onDragged" />
+        <MazeDisplay width="1000.0" height="1000.0" fx:id="mazeDisplay" AnchorPane.topAnchor="25" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0" onKeyPressed="#keyPressed" onMouseDragged="#onDragged" />
+
         <CheckBox styleClass="bttn" mnemonicParsing="false" onAction="#Solve" prefHeight="38.0" prefWidth="210.0" style="-fx-font-weight:bold" text="Show Solution" textAlignment="CENTER" AnchorPane.bottomAnchor="38" AnchorPane.rightAnchor="35">
             <font>
                 <Font name="Arial" size="18.0" />
@@ -23,6 +27,18 @@
             <effect>
                 <DropShadow radius="14.68" width="39.72" />
             </effect>
+            <HBox alignment="BOTTOM_RIGHT" AnchorPane.rightAnchor="35" AnchorPane.bottomAnchor="38">
+                <children>
+                    <CheckBox styleClass="bttn" mnemonicParsing="false" onAction="#Solve" prefHeight="38.0" prefWidth="210.0" style="-fx-font-weight:bold" text="Show Solution" textAlignment="CENTER">
+                        <font>
+                            <Font name="Arial" size="18.0" />
+                        </font>
+                        <effect>
+                            <DropShadow radius="14.68" width="39.72" />
+                        </effect>
+                    </CheckBox>
+                </children>
+            </HBox>
         </CheckBox>
 
         <MenuBar blendMode="DIFFERENCE" prefHeight="25.0" prefWidth="673.0" styleClass="desc" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

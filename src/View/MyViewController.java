@@ -12,10 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -40,6 +37,8 @@ public class MyViewController implements IView, Observer {
     public MazeDisplay mazeDisplay;
     @FXML
     private MediaView mediaView;
+    @FXML
+    private AnchorPane anchorPane;
     private File file;
     private Media media;
     private MediaPlayer mediaPlayer;
@@ -286,6 +285,7 @@ public class MyViewController implements IView, Observer {
     }
 
     public void AssingHero(MouseEvent mouseEvent) {
+        mazeDisplay.setAnchorPane(anchorPane);
         Hero = ((ImageView) (mouseEvent.getSource())).getImage();
         if (mazeDisplay != null) {
             mazeDisplay.setHero(Hero);

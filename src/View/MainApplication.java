@@ -122,7 +122,7 @@ public class MainApplication extends Application {
         props_stage.setOnCloseRequest(t -> {
             controller.ExitAction();
         });
-        mainStage.setOnCloseRequest(t -> {
+        mazeDisplay_stage.setOnCloseRequest(t -> {
             controller.ExitAction();
         });
         mainStage.setOnCloseRequest(t -> {
