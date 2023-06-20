@@ -11,7 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Objects;
 
 public class MainApplication extends Application {
@@ -39,6 +45,8 @@ public class MainApplication extends Application {
     static Stage characterChoose_stage;
     static Stage about_stage;
     static Stage props_stage;
+    private Logger logger = LogManager.getLogger();
+    static ByteArrayOutputStream baos;
     public static void main(String[] args) {
         launch(args);
     }
@@ -46,6 +54,14 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        Configurator.setRootLevel(Level.DEBUG);
+        baos = new ByteArrayOutputStream();
+
+        // Redirect the System.out to the ByteArrayOutputStream
+
+        PrintStream ps = new PrintStream(baos);
+        System.setOut(ps);
+
         String googleFontsCSS = "https://fonts.googleapis.com/css2?family=Diphylleia&display=swap";
         mainStage = stage;
 
@@ -128,6 +144,7 @@ public class MainApplication extends Application {
         mainStage.setOnCloseRequest(t -> {
             controller.ExitAction();
         });
+
         /** - - - - - -- -- - - - - - - - - - - - - - Applying Scenes - - - - - - - - - - - - - - - - - -- - - - - - -*/
         mazeDisplay_stage.setScene(mazeDisplay_scene);
         characterChoose_stage.setScene(characterChoose_scene);
@@ -158,6 +175,7 @@ public class MainApplication extends Application {
         });
 
         mainStage.show();
+
 
     }
 }

@@ -41,6 +41,10 @@ public class MazeDisplay extends Canvas {
 
     private AnchorPane anchorPane;
 
+    /**
+     * Constructor for the MazeDisplay class.
+     * Initializes the necessary properties and sets up event listeners.
+     */
     public MazeDisplay() {
         currLocation = new double[2];
         initialize();
@@ -81,14 +85,28 @@ public class MazeDisplay extends Canvas {
         });
     }
 
+    /**
+     * Sets the maze to be displayed.
+     *
+     * @param maze The maze to be displayed.
+     */
     public void setMaze(Maze maze) {
         this.maze = maze;
     }
 
+    /**
+     * Solves the current maze.
+     */
     public void Solve() {
         System.out.println("solve");
     }
 
+    /**
+     * Draws the maze on the canvas, including the walls, goal, player, and solution path.
+     * If a custom hero image is not set, a default hero image is used.
+     * If a maze is set, the canvas size is adjusted to fit the maze dimensions.
+     * The zooming transformation is applied to the graphics context to scale the maze.
+     */
     public void draw() {
         if (hero == null) {
             // default hero
@@ -136,7 +154,7 @@ public class MazeDisplay extends Canvas {
                     }
                     if (board[i][j] == 1)
                         graphicsContext.drawImage(wallImage, w, h, cellWidth, cellHeight);
-                     else if (showSol && !(i == playerRow && j == playerCol)) {
+                    else if (showSol && !(i == playerRow && j == playerCol)) {
                         AState currState = new MazeState(i, j, 0);
                         if (solPath != null && solPath.contains(currState))
                             graphicsContext.drawImage(monster, w, h, cellWidth, cellHeight);
@@ -155,24 +173,52 @@ public class MazeDisplay extends Canvas {
         }
     }
 
+    /**
+     * Sets the hero image to be displayed in the maze.
+     *
+     * @param hero The hero image.
+     */
     public void setHero(Image hero) {
         this.hero = hero;
     }
 
+    /**
+     * Sets the position of the player in the maze.
+     *
+     * @param playerRow The row position of the player.
+     * @param playerCol The column position of the player.
+     */
     public void setPlayerPos(int playerRow, int playerCol) {
         this.playerRow = playerRow;
         this.playerCol = playerCol;
     }
 
+    /**
+     * Sets the solution for the maze.
+     *
+     * @param sol The solution for the maze.
+     */
     public void setMazeSolution(Solution sol) {
         this.solution = sol;
         solPath = sol.getSolutionPath();
     }
 
+    /**
+     * Sets whether to display the solution path in the maze.
+     *
+     * @param toSet True to display the solution path, false otherwise.
+     */
     public void setSol(boolean toSet) {
         showSol = toSet;
     }
 
+    /**
+     * Zooms in on the maze canvas at the specified mouse position.
+     *
+     * @param mouseX The x-coordinate of the mouse position.
+     * @param mouseY The y-coordinate of the mouse position.
+     * @throws NonInvertibleTransformException if the transformation matrix is not invertible.
+     */
     private void zoomIn(double mouseX, double mouseY) throws NonInvertibleTransformException {
         if (zoomFactor < 3.0) {
             zoomFactor += zoomStep;
@@ -187,6 +233,13 @@ public class MazeDisplay extends Canvas {
         }
     }
 
+    /**
+     * Zooms out from the maze canvas at the specified mouse position.
+     *
+     * @param mouseX The x-coordinate of the mouse position.
+     * @param mouseY The y-coordinate of the mouse position.
+     * @throws NonInvertibleTransformException if the transformation matrix is not invertible.
+     */
     private void zoomOut(double mouseX, double mouseY) throws NonInvertibleTransformException {
         if (zoomFactor > 1.0) {
             zoomFactor -= zoomStep;
@@ -201,24 +254,50 @@ public class MazeDisplay extends Canvas {
         }
     }
 
+    /**
+     * Sets the AnchorPane that contains the maze canvas.
+     *
+     * @param anchor The AnchorPane that contains the maze canvas.
+     */
     public void setAnchorPane(AnchorPane anchor) {
         this.anchorPane = anchor;
     }
 
+    /**
+     * Resizes the maze canvas to the specified width and height.
+     *
+     * @param width  The new width of the maze canvas.
+     * @param height The new height of the maze canvas.
+     */
     @Override
     public void resize(double width, double height) {
         super.resize(width, height);
         draw();
     }
 
+    /**
+     * Returns the current location of the hero in the maze.
+     *
+     * @return The current location of the hero as an array [y, x].
+     */
     public double[] getHeroLocation() {
         return currLocation;
     }
 
+    /**
+     * Returns the proportional width of a cell in the maze, accounting for zoom factor.
+     *
+     * @return The proportional width of a cell.
+     */
     public double getPropX() {
         return cellWidth * zoomFactor;
     }
 
+    /**
+     * Returns the proportional height of a cell in the maze, accounting for zoom factor.
+     *
+     * @return The proportional height of a cell.
+     */
     public double getPropY() {
         return cellHeight * zoomFactor;
     }

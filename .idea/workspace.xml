@@ -6,6 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="90276f7f-ae03-4cb3-b165-c7df2173899f" name="Changes" comment="male male dvarim">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/IModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/MazeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MazeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MazeDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MazeDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/MainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MainApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/MazeDisplay$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MazeDisplay$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/MyViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MyViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ViewModel/MyViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ViewModel/MyViewModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/log.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +33,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/View/CharacterChoose.fxml" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -31,17 +47,21 @@
     </option>
   </component>
   <component name="ProjectId" id="2RQLRBAdB5Dcq3L0ROTR9OtHguX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/omera/OneDrive/שולחן העבודה/לימודים/נושאים מתקדמים בתכנות/ATP-Project-PartC/ATP-Project-PartC/resources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/omera/OneDrive/שולחן העבודה/לימודים/נושאים מתקדמים בתכנות/ATP-Project-PartB&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -99,7 +119,8 @@
       <workItem from="1687179559498" duration="96000" />
       <workItem from="1687179662688" duration="20177000" />
       <workItem from="1687265796735" duration="7122000" />
-      <workItem from="1687273747683" duration="6558000" />
+      <workItem from="1687273747683" duration="7323000" />
+      <workItem from="1687281121776" duration="2971000" />
     </task>
     <task id="LOCAL-00001" summary="sound">
       <created>1687180286479</created>
@@ -143,16 +164,34 @@
       <option name="project" value="LOCAL" />
       <updated>1687280148310</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="male male dvarim">
+      <created>1687280763343</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687280763343</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="sound" />
     <MESSAGE value="solution display" />
     <MESSAGE value="male male dvarim" />
     <option name="LAST_COMMIT_MESSAGE" value="male male dvarim" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NoClassDefFoundError" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
