@@ -15,6 +15,11 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.config.Configurator;
+
 
 public class MyModel extends Observable implements IModel{
     private Maze maze;
@@ -24,6 +29,7 @@ public class MyModel extends Observable implements IModel{
     private final Server mazeGenerationServer;
     private final Server mazeSolverServer;
     private boolean reachedEnd;
+    private Logger logger = LogManager.getLogger();
 
 
     public MyModel()
@@ -33,6 +39,7 @@ public class MyModel extends Observable implements IModel{
         mazeGenerationServer.start();
         mazeSolverServer.start();
         reachedEnd = false;
+        Configurator.setRootLevel(Level.DEBUG);
     }
     @Override
     public Maze getMaze() {
@@ -76,10 +83,9 @@ public class MyModel extends Observable implements IModel{
                         InputStream is = new MyDecompressorInputStream(new ByteArrayInputStream(compressedMaze));
                         byte[] decompressedMaze = new byte[row*col+24]; //allocating byte[] for the decompressed maze
                         is.read(decompressedMaze); //Fill decompressedMaze with bytes
-
                         // initialize needed components
                         maze = new Maze(decompressedMaze);
-                        maze.print();
+                        logger.info("User has created a new maze of sizes : " + row + " " + col);
                         playerRow = maze.getStartPosition().getRow_index();
                         playerCol = maze.getStartPosition().getColumn_index();
                         reachedEnd = false;
@@ -95,17 +101,7 @@ public class MyModel extends Observable implements IModel{
             client.communicateWithServer();
         } catch (UnknownHostException e) {
             e.printStackTrace();
-        }
-    }
-
-    public void solve()
-    {
-        if(maze == null);
-            //todo: throw some error?
-        else {
-            solveMaze();
-            setChanged();
-            notifyObservers("UpdateSolution");
+            logger.error("Couldn't handle client at port 5400");
         }
     }
     @Override
@@ -121,8 +117,7 @@ public class MyModel extends Observable implements IModel{
                         toServer.writeObject(maze); //send maze to server
                         toServer.flush();
                         mazeSol = (Solution) fromServer.readObject();
-                        maze.print();
-                        System.out.println(mazeSol.getSolutionPath());
+                        logger.info("a maze was solved of sizes : " + maze.getRows() + " " + maze.getColumns());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -131,6 +126,7 @@ public class MyModel extends Observable implements IModel{
             client.communicateWithServer();
         } catch (UnknownHostException e) {
             e.printStackTrace();
+            logger.error("Couldn't handle client at port 5401");
         }
     }
 
@@ -141,23 +137,37 @@ public class MyModel extends Observable implements IModel{
         int tempRow = this.playerRow;
         int tempCol = this.playerCol;
         switch (direction) {
-            case NUMPAD1, END -> moveChar(1, -1);
+            case NUMPAD1, END -> moveDiagonal(1, -1);
             case NUMPAD2, DOWN -> moveChar(1, 0);
-            case NUMPAD3, PAGE_DOWN -> moveChar(1, 1);
+            case NUMPAD3, PAGE_DOWN -> moveDiagonal(1, 1);
             case NUMPAD4, LEFT -> moveChar(0, -1);
             case NUMPAD6, RIGHT -> moveChar(0, 1);
-            case NUMPAD7, HOME -> moveChar(-1, -1);
+            case NUMPAD7, HOME -> moveDiagonal(-1, -1);
             case NUMPAD8, UP -> moveChar(-1, 0);
-            case NUMPAD9, PAGE_UP -> moveChar(-1, 1);
+            case NUMPAD9, PAGE_UP -> moveDiagonal(-1, 1);
         }
         if (tempRow != this.playerRow || tempCol != this.playerCol){
             setChanged();
             if(playerRow == maze.getGoalPosition().getRow_index() && playerCol == maze.getGoalPosition().getColumn_index()) {
                 reachedEnd = true;
+                logger.info("Player found the maze solution");
                 notifyObservers("UpdatePlayerPosition, FoundGoal");
             }
-            else notifyObservers("UpdatePlayerPosition");
+            else
+            {
+                logger.info("Player moved to: " + tempRow + "," + tempCol);
+                notifyObservers("UpdatePlayerPosition");
+            }
         }
+    }
+
+    public void moveDiagonal(int rowMove, int colMove)
+    {
+        int [][] mazeMat = maze.getMaze();
+        if(mazeMat[playerRow + rowMove][playerCol + colMove] == 0)
+            if(mazeMat[playerRow+rowMove][playerCol] == 0 || mazeMat[playerRow][playerCol+colMove] == 0)
+                moveChar(rowMove,colMove);
+
     }
 
     public void moveChar(int rowMove, int colMove)
@@ -171,7 +181,6 @@ public class MyModel extends Observable implements IModel{
 
     }
 
-
     @Override
     public void saveMaze(File file) {
         if (file == null) return;
@@ -180,8 +189,10 @@ public class MyModel extends Observable implements IModel{
             MazeData mazeData = new MazeData(maze, playerRow, playerCol, mazeSol);
             mazeSaver.writeObject(mazeData);
             success = true;
+            logger.info("Player saved the maze");
         } catch (IOException e) {
             success = false;
+            logger.error("Player was unable to save the maze");
         }
         showAlert(success ? "Game Saved!" : "Could not save game :(\nPlease try again!", success);
     }
@@ -199,8 +210,10 @@ public class MyModel extends Observable implements IModel{
             playerCol = mazeData.getPlayerCol();
             mazeSol = mazeData.getSolution();
             setChanged();
+            logger.info("Player loaded a maze of sizes: " + maze.getRows() + "," + maze.getColumns());
             notifyObservers("UpdateMaze, UpdatePlayerPosition, UpdateSolution" + ", "+ msg);
         } catch (Exception e) {
+            logger.error("Player couldn't load the maze");
             showAlert("Could not load game :(\nPlease try again!", false);
         }
     }
@@ -213,6 +226,7 @@ public class MyModel extends Observable implements IModel{
 
     @Override
     public void endGame() {
+        logger.info("Player has ended the game");
         mazeSolverServer.stop();
         mazeGenerationServer.stop();
     }
@@ -230,16 +244,4 @@ public class MyModel extends Observable implements IModel{
         notifyObservers("UpdatePlayerPosition");
     }
 
-    @Override
-    public void setMazeSolvingAlgorithm(String algo) throws IOException {
-        Configurations config = Configurations.getInstance();
-//        config.setMazeSearchingAlgorithm(algo);
-        solve();
-    }
-    @Override
-    public void setMazeGeneratingAlgorithmAlgorithm(String algo) throws IOException {
-        Configurations config = Configurations.getInstance();
-//        config.setMazeGeneratingAlgorithm(algo);
-        generateMaze(this.maze.getRows(), this.maze.getColumns());
-    }
 }
