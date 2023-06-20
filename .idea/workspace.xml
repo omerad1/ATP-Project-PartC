@@ -5,57 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90276f7f-ae03-4cb3-b165-c7df2173899f" name="Changes" comment="male male dvarim">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_17_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_17_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/log4j2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ATP-Project-PartC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP-Project-PartC.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/IModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/MyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MyModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/About.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/About.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/About.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/CharacterChoose.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CharacterChoose.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/CharacterPick.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CharacterPick.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Help.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Help.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MainStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MainStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MazeDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MazeDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Properties.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Properties.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/TestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/mazeDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/mazeDisplay.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/1000_F_452939653_uSLAQdF6fmHpsPUFlPJaG2Jy5ds4Tsdu.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/OpenBackGround.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/congrats.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/gate.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/helpBackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/igor-throne-fraim.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/knightBackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/mazeBackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/monster.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/old-book-open-dark-wood-background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/path.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/pexels-dana-tentis-370799.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/propertiesBack.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/the-maze-runner-maze-runner-gifs.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/wall.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/IModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/IModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Model/MyModel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MyModel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Model/MyModel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MyModel$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Model/MyModel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MyModel$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Model/MyModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MyModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/About.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/About.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/About.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/CharacterChoose.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/CharacterChoose.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/CharacterPick.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/CharacterPick.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/Help.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Help.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MainStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MainStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MazeDisplay$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MazeDisplay$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/View/MyViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MyViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/Properties.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/Properties.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/TestView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/mazeDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/mazeDisplay.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/imgs/helpBackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/imgs/old-book-open-dark-wood-background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ViewModel/MyViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ViewModel/MyViewModel.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Tag Library Descriptor" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,9 +60,10 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
-    "last_opened_file_path": "C:/Users/omera/OneDrive/שולחן העבודה/לימודים/נושאים מתקדמים בתכנות/ATP-Project-PartC/ATP-Project-PartC/resources",
+    "last_opened_file_path": "C:/Users/תום שיינמן/IdeaProjects/javafx-sdk-20.0.1/lib",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -107,7 +89,7 @@
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.MainApplication" />
       <module name="ATP-Project-PartC" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\omera\OneDrive\שולחן העבודה\לימודים\נושאים מתקדמים בתכנות\openjfx-20.0.1_windows-x64_bin-sdk\javafx-sdk-20.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.media" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\תום שיינמן\IdeaProjects\javafx-sdk-20.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.media" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="View.*" />

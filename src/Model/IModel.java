@@ -14,7 +14,6 @@ public interface IModel{
     public void updateCharacterLocation(KeyCode direction);
     public void assignObserver(Observer o);
     public void solveMaze();
-    public void solve();
     Solution getMazeSolution();
     void saveMaze(File file);
     void loadMaze(File file);
@@ -24,7 +23,4 @@ public interface IModel{
     void endGame();
     void restartMaze();
 
-    void setMazeSolvingAlgorithm(String algo) throws IOException;
-
-    void setMazeGeneratingAlgorithmAlgorithm(String algo) throws IOException;
 }

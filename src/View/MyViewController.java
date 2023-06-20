@@ -22,12 +22,17 @@ import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 
 import java.io.*;
 import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
+
 
 public class MyViewController implements IView, Observer {
     private Image Hero;
@@ -45,17 +50,22 @@ public class MyViewController implements IView, Observer {
     private MediaPlayer mediaPlayer;
     private int rows = 21;
     private int cols = 21;
+    private Logger logger = LogManager.getLogger();
+
 
 
     public void setViewModel(MyViewModel viewModel) {
         mVModel = viewModel;
         mVModel.addObserver(this);
+        Configurator.setRootLevel(Level.DEBUG);
     }
 
     public void Solve(ActionEvent actionEvent) {
         if (((CheckBox) (actionEvent.getSource())).isSelected()) {
+            logger.info("Player has asked for maze solution");
             mazeDisplay.setSol(true);
         } else {
+            logger.info("Player has asked to hide the maze solution");
             mazeDisplay.setSol(false);
         }
         mazeDisplay.requestFocus();
@@ -155,9 +165,11 @@ public class MyViewController implements IView, Observer {
         if (((CheckMenuItem) actionEvent.getSource()).isSelected()) {
             mediaPlayer.play();
             mediaPlayer.setVolume(0.3);
+            logger.info("Player has chosen to play some music");
 
         } else {
             mediaPlayer.pause();
+            logger.info("Player has stopped the music");
         }
 
 
@@ -229,7 +241,6 @@ public class MyViewController implements IView, Observer {
 
 
     public void keyPressed(KeyEvent keyEvent) {
-        System.out.println("key pressed" + keyEvent.getCode());
         mVModel.movePlayer(keyEvent.getCode());
         keyEvent.consume();
     }
@@ -292,8 +303,7 @@ public class MyViewController implements IView, Observer {
             mVModel.generateMaze(rows, cols);
             MainApplication.mazeDisplay_stage.show();
             MainApplication.characterChoose_stage.hide();
-        } else {
-            System.out.println("maze display is null :(");
+            logger.info("Player has chosen a new hero!");
         }
     }
 
