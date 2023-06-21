@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90276f7f-ae03-4cb3-b165-c7df2173899f" name="Changes" comment="male male dvarim">
+    <list default="true" id="90276f7f-ae03-4cb3-b165-c7df2173899f" name="Changes" comment="finish(?)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/IModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/MazeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MazeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MazeDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MazeDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/MazeData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/MazeData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/View/MainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MainApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MazeDisplay$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MazeDisplay$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MazeDisplay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MyViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MyViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ViewModel/MyViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ViewModel/MyViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/log.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +110,7 @@
       <workItem from="1687179662688" duration="20177000" />
       <workItem from="1687265796735" duration="7122000" />
       <workItem from="1687273747683" duration="7323000" />
-      <workItem from="1687281121776" duration="2971000" />
+      <workItem from="1687281121776" duration="3907000" />
     </task>
     <task id="LOCAL-00001" summary="sound">
       <created>1687180286479</created>
@@ -171,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687280763343</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="finish(?)">
+      <created>1687284164750</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1687284164750</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +179,8 @@
     <MESSAGE value="sound" />
     <MESSAGE value="solution display" />
     <MESSAGE value="male male dvarim" />
-    <option name="LAST_COMMIT_MESSAGE" value="male male dvarim" />
+    <MESSAGE value="finish(?)" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish(?)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
